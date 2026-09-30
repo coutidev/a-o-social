@@ -37,31 +37,31 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
         {/* Headline & Subtle Watermark Container */}
         <div className="relative w-full max-w-4xl flex flex-col items-center">
           
-          {/* Subtle Watermark: The 3 official group emblems behind the words */}
+          {/* Subtle Watermark: The 3 official group emblems behind the words, softened for maximum legibility */}
           <div 
-            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[620px] md:w-[760px] max-w-full aspect-[2.7/1] select-none z-0 opacity-20 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]"
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[580px] md:w-[700px] max-w-full aspect-[2.7/1] select-none z-0 opacity-12 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_75%)]"
             aria-hidden="true"
           >
             <img
               src="/logos-unidos.png"
               alt=""
-              className="w-full h-full object-contain filter grayscale contrast-150 brightness-150"
+              className="w-full h-full object-contain filter grayscale contrast-125"
             />
           </div>
 
-          {/* Soft ambient center glow */}
-          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[500px] h-48 bg-white/[0.05] blur-3xl rounded-full z-0" />
+          {/* Dark backdrop vignette behind the letters to guarantee 100% clear readability */}
+          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[600px] h-48 bg-black/60 blur-2xl rounded-full z-0" />
 
-          {/* Strong headline in authentic Brazilian Pixo Reto */}
+          {/* High-Impact Headline: 100% visible, crisp, bold & clear */}
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="relative z-10 font-pixo text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-[0.06em] sm:tracking-[0.1em] leading-[1.1] max-w-4xl drop-shadow-[0_4px_25px_rgba(0,0,0,0.95)]"
+            className="relative z-10 font-heading font-black text-4xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.08] max-w-4xl [text-shadow:_0_3px_20px_rgba(0,0,0,1),_0_0_35px_rgba(255,255,255,0.2)]"
           >
-            JUNTOS PELA NOSSA <br className="hidden sm:inline" />
-            <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.4)]">
-              CRIANÇADA
+            Juntos pela nossa <br className="hidden sm:inline" />
+            <span className="text-white drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]">
+              criançada.
             </span>
           </motion.h1>
 

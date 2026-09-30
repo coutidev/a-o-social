@@ -14,6 +14,15 @@
   text-transform: uppercase;
 }
 
+.font-marker {
+  font-family: 'Permanent Marker', cursive, system-ui, sans-serif;
+}
+
+.font-urban-poster {
+  font-family: 'Bebas Neue', 'Space Grotesk', system-ui, sans-serif;
+  letter-spacing: 0.04em;
+}
+
 @layer base {
   :root {
     color-scheme: dark;
