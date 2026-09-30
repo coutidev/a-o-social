@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gift, Smile, Users, HeartHandshake, CheckCircle2, Calendar, MapPin, ExternalLink, Clock } from 'lucide-react';
+import { Gift, Smile, Users, HeartHandshake, CheckCircle2, Calendar, MapPin, ExternalLink } from 'lucide-react';
 import { DONATION_CONFIG } from '../config/donationConfig';
 import { motion } from 'motion/react';
 
@@ -8,6 +8,7 @@ export const AboutSection: React.FC = () => {
     {
       icon: Gift,
       title: "Brinquedos",
+      bgImage: "/card-brinquedos.jpeg",
       quote: "Ajude a levar presentes e alegria para as crianças.",
       description:
         "Cada doação se transforma em brinquedos novos, bolas, jogos pedagógicos e lembrancinhas escolhidas com amor para acender o sorriso no rosto dos pequenos.",
@@ -16,6 +17,7 @@ export const AboutSection: React.FC = () => {
     {
       icon: Smile,
       title: "Brincadeiras",
+      bgImage: "/card-brincadeiras.jpeg",
       quote: "Queremos proporcionar um dia divertido, leve e inesquecível.",
       description:
         "Estruturamos um dia inteiro de gincanas saudáveis, pintura no rosto, brincadeiras esportivas, lanches gostosos e muita animação para a garotada.",
@@ -24,6 +26,7 @@ export const AboutSection: React.FC = () => {
     {
       icon: Users,
       title: "Comunidade",
+      bgImage: null,
       quote: "Três grupos unidos por uma mesma missão: servir e fazer o bem.",
       description:
         "JUPES, Juventude F.C. e JUREF somam suas histórias, jovens e dedicação voluntária. Quando a comunidade se abraça, o futuro das crianças se torna mais brilhante.",
@@ -130,39 +133,52 @@ export const AboutSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: idx * 0.15 }}
-                className="group relative flex flex-col justify-between p-6 sm:p-8 rounded-3xl bg-zinc-950/70 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-300 hover:bg-zinc-900/60 hover:-translate-y-1 shadow-lg"
+                className="group relative flex flex-col justify-between p-6 sm:p-8 rounded-3xl bg-zinc-950/80 border border-zinc-800 hover:border-zinc-600 transition-all duration-300 hover:-translate-y-1 shadow-2xl overflow-hidden min-h-[440px]"
               >
-                {/* Top glow effect on hover */}
-                <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                {/* Background Photo with zoom and smooth dark gradient overlay */}
+                {card.bgImage && (
+                  <>
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
+                      style={{ backgroundImage: `url(${card.bgImage})` }}
+                    />
+                    {/* Deep dark gradient overlay for optimal reading contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/92 via-black/85 to-black/95 transition-opacity duration-300 group-hover:opacity-90" />
+                    <div className="absolute inset-0 backdrop-blur-[0.5px]" />
+                  </>
+                )}
 
-                <div>
+                {/* Top glow effect on hover */}
+                <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-20" />
+
+                <div className="relative z-10">
                   {/* Icon badge */}
-                  <div className="h-13 w-13 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-6 group-hover:border-zinc-600 group-hover:scale-105 transition-all">
+                  <div className="h-13 w-13 rounded-2xl bg-zinc-900/90 backdrop-blur-md border border-zinc-700/80 flex items-center justify-center mb-6 shadow-md group-hover:border-white/50 group-hover:scale-105 transition-all">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-heading font-bold text-2xl text-white tracking-tight mb-2">
+                  <h3 className="font-heading font-black text-2xl sm:text-3xl text-white tracking-tight mb-2 drop-shadow-sm">
                     {card.title}
                   </h3>
 
                   {/* Highlight Quote */}
-                  <blockquote className="text-sm font-semibold text-zinc-300 mb-4 border-l-2 border-zinc-700 pl-3 italic">
+                  <blockquote className="text-xs sm:text-sm font-semibold text-zinc-200 mb-4 border-l-2 border-white/70 bg-white/5 py-1.5 px-3 rounded-r-xl backdrop-blur-sm italic">
                     "{card.quote}"
                   </blockquote>
 
                   {/* Description */}
-                  <p className="text-sm text-zinc-400 leading-relaxed mb-6 font-normal">
+                  <p className="text-sm text-zinc-300 leading-relaxed mb-6 font-normal drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                     {card.description}
                   </p>
                 </div>
 
                 {/* Bullet details */}
-                <div className="pt-4 border-t border-zinc-800/70 space-y-2">
+                <div className="relative z-10 pt-4 border-t border-zinc-700/70 space-y-2 bg-black/40 -mx-2 px-3 py-2 rounded-xl backdrop-blur-sm">
                   {card.details.map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-xs text-zinc-400">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-zinc-300 shrink-0" />
-                      <span>{item}</span>
+                    <div key={item} className="flex items-center gap-2 text-xs text-zinc-200">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0 drop-shadow" />
+                      <span className="font-medium drop-shadow-sm">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -172,7 +188,7 @@ export const AboutSection: React.FC = () => {
         </div>
 
         {/* Commitment note */}
-        <div className="mt-12 p-6 rounded-2xl border border-zinc-800 bg-zinc-950 text-center max-w-2xl mx-auto">
+        <div className="mt-12 p-6 rounded-2xl border border-zinc-800 bg-zinc-950 text-center max-w-2xl mx-auto shadow-lg">
           <p className="text-xs sm:text-sm text-zinc-400">
             <strong className="text-white">Prestação de Contas Aberta:</strong> Todas as fotos, vídeos e a prestação do evento na Praça Napoleão Côrtes Filho (Los Manos) serão compartilhados diretamente nos perfis oficiais do Instagram do JUPES, Juventude e JUREF.
           </p>
