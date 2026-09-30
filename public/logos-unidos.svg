@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="100%" height="100%">
+  <defs>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#141416" />
+      <stop offset="100%" stop-color="#050505" />
+    </radialGradient>
+    <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Solid Deep Black Canvas -->
+  <rect width="1200" height="480" fill="#000000"/>
+
+  <!-- ========================================================================= -->
+  <!-- 1. JUREF EMBLEM (LEFT) - Center: (220, 240) Radius: ~170 -->
+  <!-- ========================================================================= -->
+  <g transform="translate(220, 240)" filter="url(#badgeShadow)">
+    <!-- Base black circle -->
+    <circle cx="0" cy="0" r="170" fill="#000000" stroke="#ffffff" stroke-width="5"/>
+    <circle cx="0" cy="0" r="158" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="0" cy="0" r="148" fill="#09090b" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <!-- 3 Stars at the top -->
+    <!-- Middle Star -->
+    <polygon points="0,-125 4,-112 18,-112 7,-104 11,-91 0,-99 -11,-91 -7,-104 -18,-112 -4,-112" fill="#ffffff"/>
+    <!-- Left Star -->
+    <polygon points="-38,-120 -35,-108 -22,-108 -32,-101 -28,-89 -38,-96 -48,-89 -44,-101 -54,-108 -41,-108" fill="#ffffff" transform="rotate(-15, -38, -105)"/>
+    <!-- Right Star -->
+    <polygon points="38,-120 41,-108 54,-108 44,-101 48,-89 38,-96 28,-89 32,-101 22,-108 35,-108" fill="#ffffff" transform="rotate(15, 38, -105)"/>
+
+    <!-- Laurel Leaves (Left side) -->
+    <g fill="#ffffff">
+      <path d="M -115 -45 C -130 -35, -125 -15, -108 -25 C -115 -20, -118 -32, -115 -45 Z" />
+      <path d="M -125 -15 C -140 -5, -135 15, -118 5 C -125 10, -128 -2, -125 -15 Z" />
+      <path d="M -130 18 C -142 30, -134 48, -118 38 C -124 42, -128 30, -130 18 Z" />
+      <path d="M -122 50 C -132 65, -120 80, -105 70 C -112 72, -118 62, -122 50 Z" />
+      <path d="M -105 82 C -112 98, -98 110, -85 98 C -92 100, -98 92, -105 82 Z" />
+      
+      <!-- Laurel Leaves (Right side) -->
+      <path d="M 115 -45 C 130 -35, 125 -15, 108 -25 C 115 -20, 118 -32, 115 -45 Z" />
+      <path d="M 125 -15 C 140 -5, 135 15, 118 5 C 125 10, 128 -2, 125 -15 Z" />
+      <path d="M 130 18 C 142 30, 134 48, 118 38 C 124 42, 128 30, 130 18 Z" />
+      <path d="M 122 50 C 132 65, 120 80, 105 70 C 112 72, 118 62, 122 50 Z" />
+      <path d="M 105 82 C 112 98, 98 110, 85 98 C 92 100, 98 92, 105 82 Z" />
+    </g>
+
+    <!-- Wolf Head Center (Detailed Silhouette & Fur lines) -->
+    <g transform="translate(-10, -10)">
+      <!-- Wolf Head Main Body -->
+      <path d="M -55 -15 
+               C -60 -25, -50 -45, -35 -40 
+               C -30 -30, -25 -25, -20 -35 
+               C -15 -50, -5 -65, 5 -45 
+               C 15 -35, 20 -20, 30 -30 
+               C 40 -10, 35 15, 45 35 
+               C 35 45, 25 55, 30 70 
+               C 15 65, 5 60, -10 65 
+               C -25 70, -35 55, -45 40 
+               C -55 25, -60 5, -55 -15 Z" 
+            fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+      
+      <!-- Wolf Snout facing left -->
+      <path d="M -35 -15 
+               L -75 0 
+               L -55 18 
+               L -40 12 
+               L -48 28 
+               L -35 32 
+               L -20 18 Z" 
+            fill="#ffffff"/>
+
+      <!-- Wolf Eye & Inner fur shadows in black -->
+      <polygon points="-48,-2 -40,3 -45,7 -52,2" fill="#000000"/>
+      <path d="M -25 -20 L -30 -5 L -20 5 L -28 15 L -10 25 L -18 35 L 5 45 L -2 25 L 8 10 L 0 -5 Z" fill="#000000"/>
+      <path d="M 15 -25 L 5 -10 L 18 5 L 8 20 L 22 35 L 12 48" stroke="#000000" stroke-width="3" fill="none"/>
+    </g>
+
+    <!-- Bottom Curved Banner: JUREF -->
+    <path d="M -115 95 C -60 145, 60 145, 115 95 L 105 130 C 50 170, -50 170, -105 130 Z" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+    <text x="0" y="145" fill="#000000" font-family="'Space Grotesk', system-ui, sans-serif" font-size="28" font-weight="900" letter-spacing="8" text-anchor="middle">
+      JUREF
+    </text>
+
+    <!-- Barbed wire / hatch lines under banner -->
+    <path d="M -75 148 Q 0 172 75 148" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <path d="M -60 152 L -55 162 M -30 156 L -25 166 M 0 158 L 5 168 M 30 156 L 35 166 M 60 152 L 65 162" stroke="#ffffff" stroke-width="2"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- 2. J.U.P.E.S. EMBLEM (CENTER) - Center: (600, 240) Radius: ~170 -->
+  <!-- ========================================================================= -->
+  <g transform="translate(600, 240)" filter="url(#badgeShadow)">
+    <!-- Base black circle -->
+    <circle cx="0" cy="0" r="170" fill="#000000" stroke="#ffffff" stroke-width="5"/>
+    <circle cx="0" cy="0" r="158" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="0" cy="0" r="150" fill="#050505" stroke="#ffffff" stroke-width="1"/>
+
+    <!-- EAGLE WITH SPREAD WINGS -->
+    <!-- Eagle Head facing left at top -->
+    <g transform="translate(0, -95)">
+      <path d="M -8 -15 
+               C -25 -15, -35 -2, -30 10 
+               C -28 15, -20 18, -12 18 
+               L -5 22 
+               L 5 22 
+               C 15 20, 22 15, 20 5 
+               C 18 -8, 8 -15, -8 -15 Z" fill="#ffffff"/>
+      <!-- Eagle Beak hook -->
+      <path d="M -25 -2 C -40 2, -35 15, -25 10 Z" fill="#ffffff"/>
+      <circle cx="-16" cy="3" r="2.5" fill="#000000"/>
+    </g>
+
+    <!-- Outspread Wings (Left & Right) -->
+    <!-- Left Wing Feathers -->
+    <g fill="#ffffff" stroke="#000000" stroke-width="1.5">
+      <path d="M -15 -80 C -50 -85, -100 -60, -135 -15 C -125 -10, -110 -15, -100 -5 C -120 15, -110 35, -80 30 C -95 48, -75 65, -55 50 C -45 10, -25 -20, -15 -80 Z"/>
+      <path d="M -35 -60 C -65 -60, -95 -35, -115 0 C -90 10, -70 5, -50 -15 Z"/>
+      <path d="M -50 -40 C -75 -35, -95 -10, -105 18 C -85 20, -70 15, -55 0 Z"/>
+    </g>
+
+    <!-- Right Wing Feathers -->
+    <g fill="#ffffff" stroke="#000000" stroke-width="1.5">
+      <path d="M 15 -80 C 50 -85, 100 -60, 135 -15 C 125 -10, 110 -15, 100 -5 C 120 15, 110 35, 80 30 C 95 48, 75 65, 55 50 C 45 10, 25 -20, 15 -80 Z"/>
+      <path d="M 35 -60 C 65 -60, 95 -35, 115 0 C 90 10, 70 5, 50 -15 Z"/>
+      <path d="M 50 -40 C 75 -35, 95 -10, 105 18 C 85 20, 70 15, 55 0 Z"/>
+    </g>
+
+    <!-- Central Shield of Faith -->
+    <path d="M 0 -60 
+             L 55 -60 
+             Q 60 10 50 40 
+             Q 30 75 0 92 
+             Q -30 75 -50 40 
+             Q -60 10 -55 -60 Z" 
+          fill="#000000" stroke="#ffffff" stroke-width="4"/>
+
+    <!-- LATIN CROSS in center of shield -->
+    <g fill="#ffffff">
+      <!-- Vertical beam -->
+      <rect x="-6" y="-45" width="12" height="95" rx="2"/>
+      <!-- Horizontal crossbar -->
+      <rect x="-30" y="-25" width="60" height="12" rx="2"/>
+    </g>
+
+    <!-- Flowing Ribbon Banner: J.U.P.E.S. -->
+    <path d="M -115 65 
+             C -60 110, 60 110, 115 65 
+             L 105 100 
+             C 50 140, -50 140, -105 100 Z" 
+          fill="#ffffff" stroke="#000000" stroke-width="2"/>
+    
+    <!-- Ribbon ends -->
+    <path d="M -115 65 L -130 90 L -105 100 Z" fill="#e4e4e7" stroke="#000000" stroke-width="1.5"/>
+    <path d="M 115 65 L 130 90 L 105 100 Z" fill="#e4e4e7" stroke="#000000" stroke-width="1.5"/>
+
+    <text x="0" y="112" fill="#000000" font-family="'Space Grotesk', system-ui, sans-serif" font-size="25" font-weight="900" letter-spacing="4" text-anchor="middle">
+      J.U.P.E.S.
+    </text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- 3. JUVENTUDE F.C. EMBLEM (RIGHT) - Center: (980, 240) Radius: ~170 -->
+  <!-- ========================================================================= -->
+  <g transform="translate(980, 240)" filter="url(#badgeShadow)">
+    <!-- Base black circle -->
+    <circle cx="0" cy="0" r="170" fill="#000000" stroke="#ffffff" stroke-width="5"/>
+    <circle cx="0" cy="0" r="158" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="0" cy="0" r="116" fill="#000000" stroke="#000000" stroke-width="4"/>
+    <circle cx="0" cy="0" r="108" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+
+    <!-- Outer Ring Text (Upper: JUVENTUDE F.C. / Lower: CURITIBA 1981) -->
+    <!-- Two Stars at 9 o'clock and 3 o'clock in the white ring -->
+    <!-- Left Star (Outline) -->
+    <polygon points="-137,-8 -134,0 -124,0 -132,6 -129,15 -137,9 -145,15 -142,6 -150,0 -140,0" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+    <!-- Right Star (Outline) -->
+    <polygon points="137,-8 140,0 150,0 142,6 145,15 137,9 129,15 132,6 124,0 134,0" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+
+    <!-- Curved Text: JUVENTUDE F.C. on upper arc -->
+    <path id="upperArcJuventude" d="M -135 0 A 135 135 0 0 1 135 0" fill="none" stroke="none"/>
+    <text font-family="'Space Grotesk', system-ui, sans-serif" font-size="25" font-weight="900" letter-spacing="3" fill="#000000">
+      <textPath href="#upperArcJuventude" startOffset="50%" text-anchor="middle">
+        JUVENTUDE F.C.
+      </textPath>
+    </text>
+
+    <!-- Curved Text: CURITIBA 1981 on lower arc -->
+    <path id="lowerArcJuventude" d="M -135 0 A 135 135 0 0 0 135 0" fill="none" stroke="none"/>
+    <text font-family="'Space Grotesk', system-ui, sans-serif" font-size="20" font-weight="800" letter-spacing="3" fill="#000000">
+      <textPath href="#lowerArcJuventude" startOffset="50%" text-anchor="middle">
+        CURITIBA 1981
+      </textPath>
+    </text>
+
+    <!-- Center White Disc contains the Big Stylized 'J' and '2008' -->
+    <g transform="translate(0, -5)">
+      <!-- Big stylized Letter J in Black -->
+      <path d="M -38 -55 
+               L 38 -55 
+               L 38 -32 
+               L 16 -32 
+               L 16 15 
+               C 16 42, -5 52, -28 50 
+               C -45 48, -50 30, -48 18 
+               L -26 18 
+               C -25 25, -20 30, -10 30 
+               C -2 30, 2 24, 2 12 
+               L 2 -32 
+               L -38 -32 Z" 
+            fill="#000000"/>
+      <!-- Inner T/J decorative crosscut as seen in photo -->
+      <rect x="-24" y="-38" width="48" height="12" fill="#ffffff" opacity="0.15"/>
+    </g>
+
+    <!-- 2008 below the stylized J -->
+    <text x="0" y="72" fill="#000000" font-family="'Space Grotesk', system-ui, sans-serif" font-size="17" font-weight="900" letter-spacing="2" text-anchor="middle">
+      2008
+    </text>
+  </g>
+
+</svg>
