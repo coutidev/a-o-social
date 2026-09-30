@@ -1,5 +1,6 @@
 import React from 'react';
 import { GroupLogosBanner } from './GroupLogosBanner';
+import { CountdownTimer } from './CountdownTimer';
 import { ArrowDown, QrCode, Calendar, MapPin, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -78,6 +79,16 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
             proporcionar alegria, brincadeiras e momentos inesquecíveis para nossas crianças.
           </motion.p>
         </div>
+
+        {/* Dynamic Countdown Timer */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="mt-7 sm:mt-9 relative z-10"
+        >
+          <CountdownTimer />
+        </motion.div>
 
         {/* Big CTA Buttons with Barlow Condensed */}
         <motion.div

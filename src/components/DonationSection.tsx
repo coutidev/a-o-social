@@ -8,9 +8,7 @@ import {
   ShieldCheck, 
   Smartphone, 
   Sparkles,
-  ChevronDown,
-  Coins,
-  Heart
+  ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -20,16 +18,6 @@ export const DonationSection: React.FC = () => {
   const [showInstructions, setShowInstructions] = useState(false);
   const [customPixCode, setCustomPixCode] = useState(DONATION_CONFIG.pixCopyPasteCode);
   const [customQrImage, setCustomQrImage] = useState<string | null>(DONATION_CONFIG.pixQrCodeImageUrl);
-  const [userAmountInput, setUserAmountInput] = useState<string>('');
-
-  // Quick donation suggestions
-  const suggestedPills = [
-    { label: 'R$ 10', value: '10' },
-    { label: 'R$ 20', value: '20' },
-    { label: 'R$ 50', value: '50' },
-    { label: 'R$ 100', value: '100' },
-    { label: 'Qualquer Valor', value: '' },
-  ];
 
   // Generate QR Code SVG dynamically from the PIX payload
   useEffect(() => {
@@ -116,51 +104,6 @@ export const DonationSection: React.FC = () => {
           <p className="mt-2 text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto">
             O Pix não tem valor pré-determinado: no aplicativo do seu banco você escolhe livremente a quantia que puder e desejar enviar.
           </p>
-        </div>
-
-        {/* Free Amount Interaction Banner */}
-        <div className="mb-10 p-5 rounded-3xl border border-zinc-800 bg-zinc-950/80 backdrop-blur-md max-w-2xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0">
-                <Coins className="w-5 h-5 text-white" />
-              </div>
-              <div className="text-left">
-                <h4 className="text-sm font-bold text-white">Quanto você gostaria de enviar?</h4>
-                <p className="text-xs text-zinc-400">Você digita o valor diretamente no app do seu banco.</p>
-              </div>
-            </div>
-
-            {/* Quick Helper Pills */}
-            <div className="flex flex-wrap items-center justify-center gap-1.5">
-              {suggestedPills.map((pill) => (
-                <button
-                  key={pill.label}
-                  onClick={() => setUserAmountInput(pill.value)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
-                    userAmountInput === pill.value && pill.value !== ''
-                      ? 'bg-white text-black border-white shadow-sm'
-                      : 'bg-zinc-900 text-zinc-300 border-zinc-800 hover:border-zinc-700 hover:text-white'
-                  }`}
-                >
-                  {pill.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {userAmountInput && (
-            <motion.div
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-3 pt-3 border-t border-zinc-850 flex items-center justify-center gap-2 text-xs text-zinc-300 text-center"
-            >
-              <Heart className="w-3.5 h-3.5 text-zinc-200 fill-zinc-200" />
-              <span>
-                Excelente escolha! Ao colar o código no banco, preencha <strong className="text-white">R$ {userAmountInput},00</strong> ou o valor que preferir.
-              </span>
-            </motion.div>
-          )}
         </div>
 
         {/* ========================================================================= */}

@@ -102,8 +102,14 @@ export const AboutSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Section title & main purpose text */}
-        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+        {/* Section title & main purpose text with scroll fade-in */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-3xl mx-auto text-center mb-12 sm:mb-16"
+        >
           <div className="inline-flex items-center gap-2 mb-3">
             <HeartHandshake className="w-4 h-4 text-zinc-400" />
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-zinc-400">
@@ -120,19 +126,40 @@ export const AboutSection: React.FC = () => {
             destinada à realização de uma ação social para nossa criançada, com brinquedos,
             brincadeiras e atividades preparadas com muito carinho e responsabilidade.
           </p>
-        </div>
+        </motion.div>
 
-        {/* The 3 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {cards.map((card, idx) => {
+        {/* The 3 Cards with staggered scroll fade-in */}
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.18,
+              },
+            },
+          }}
+        >
+          {cards.map((card) => {
             const Icon = card.icon;
             return (
               <motion.div
                 key={card.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: idx * 0.15 }}
+                variants={{
+                  hidden: { opacity: 0, y: 45, scale: 0.96 },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1,
+                    transition: {
+                      duration: 0.65,
+                      ease: [0.22, 1, 0.36, 1],
+                    }
+                  },
+                }}
                 className="group relative flex flex-col justify-between p-6 sm:p-8 rounded-3xl bg-zinc-950/80 border border-zinc-800 hover:border-zinc-600 transition-all duration-300 hover:-translate-y-1 shadow-2xl overflow-hidden min-h-[440px]"
               >
                 {/* Background Photo with zoom and smooth dark gradient overlay */}
@@ -185,14 +212,20 @@ export const AboutSection: React.FC = () => {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* Commitment note */}
-        <div className="mt-12 p-6 rounded-2xl border border-zinc-800 bg-zinc-950 text-center max-w-2xl mx-auto shadow-lg">
+        {/* Commitment note with scroll fade-in */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-12 p-6 rounded-2xl border border-zinc-800 bg-zinc-950 text-center max-w-2xl mx-auto shadow-lg"
+        >
           <p className="text-xs sm:text-sm text-zinc-400">
             <strong className="text-white">Prestação de Contas Aberta:</strong> Todas as fotos, vídeos e a prestação do evento na Praça Napoleão Côrtes Filho (Los Manos) serão compartilhados diretamente nos perfis oficiais do Instagram do JUPES, Juventude e JUREF.
           </p>
-        </div>
+        </motion.div>
 
       </div>
     </section>
