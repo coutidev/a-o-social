@@ -17,6 +17,24 @@
   }
 }
 
+.font-bomb {
+  font-family: 'Modak', 'DynaPuff', cursive, system-ui, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+.bubble-graffiti {
+  font-family: 'Modak', 'DynaPuff', cursive, system-ui, sans-serif;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 
+    0 1px 0 #d4d4d8,
+    0 2px 0 #a1a1aa,
+    0 3px 0 #71717a,
+    0 4px 6px rgba(0, 0, 0, 0.95),
+    0 0 20px rgba(255, 255, 255, 0.35);
+}
+
 /* Custom glow utility for high-impact donation area */
 .pix-glow-frame {
   box-shadow: 0 0 50px -10px rgba(255, 255, 255, 0.12),

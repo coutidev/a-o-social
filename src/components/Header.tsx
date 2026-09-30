@@ -18,12 +18,12 @@ export const Header: React.FC<HeaderProps> = ({ onDonateClick }) => {
           aria-label="Ir para o topo"
         >
           <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-            <span className="font-heading font-black text-base sm:text-lg tracking-[0.2em] text-white">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)] animate-pulse" />
+            <span className="bubble-graffiti text-2xl sm:text-3xl tracking-wide text-white group-hover:scale-105 transition-transform origin-left select-none">
               AÇÃO SOCIAL
             </span>
           </div>
-          <span className="text-[10px] sm:text-xs tracking-[0.18em] text-zinc-400 font-medium group-hover:text-zinc-200 transition-colors">
+          <span className="text-[10px] sm:text-xs tracking-[0.2em] text-zinc-400 font-semibold group-hover:text-white transition-colors">
             JUPES • JUVENTUDE • JUREF
           </span>
         </a>
