@@ -26,7 +26,7 @@ export const AboutSection: React.FC = () => {
     {
       icon: Users,
       title: "Comunidade",
-      bgImage: null,
+      bgImage: "/card-comunidade.jpeg",
       quote: "Três grupos unidos por uma mesma missão: servir e fazer o bem.",
       description:
         "JUPES, Juventude F.C. e JUREF somam suas histórias, jovens e dedicação voluntária. Quando a comunidade se abraça, o futuro das crianças se torna mais brilhante.",

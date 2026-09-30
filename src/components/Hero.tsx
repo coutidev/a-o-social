@@ -1,7 +1,6 @@
 import React from 'react';
 import { GroupLogosBanner } from './GroupLogosBanner';
-import { ArrowDown, QrCode, Calendar, MapPin, Sparkles, ShieldCheck } from 'lucide-react';
-import { DONATION_CONFIG } from '../config/donationConfig';
+import { ArrowDown, QrCode, Calendar, MapPin, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface HeroProps {
@@ -13,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
   return (
     <section id="inicio" className="relative pt-6 pb-14 sm:pt-12 sm:pb-20 overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-gradient-to-b from-zinc-700/10 via-zinc-800/5 to-transparent blur-3xl rounded-full" />
+      <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-gradient-to-b from-zinc-700/15 via-zinc-800/5 to-transparent blur-3xl rounded-full" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
         
@@ -35,38 +34,57 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
           </div>
         </motion.div>
 
-        {/* Strong headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-heading font-black text-4xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.08] max-w-4xl"
-        >
-          Juntos pela nossa <br className="hidden sm:inline" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-500 underline decoration-zinc-800 decoration-wavy underline-offset-8">
-            criançada.
-          </span>
-        </motion.h1>
+        {/* Headline & Subtle Watermark Container */}
+        <div className="relative w-full max-w-4xl flex flex-col items-center">
+          
+          {/* Subtle Watermark: The 3 official group emblems behind the words */}
+          <div 
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[620px] md:w-[760px] max-w-full aspect-[2.7/1] select-none z-0 opacity-20 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]"
+            aria-hidden="true"
+          >
+            <img
+              src="/logos-unidos.png"
+              alt=""
+              className="w-full h-full object-contain filter grayscale contrast-150 brightness-150"
+            />
+          </div>
 
-        {/* Subtitle text */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-6 text-base sm:text-xl text-zinc-300 max-w-2xl font-normal leading-relaxed"
-        >
-          <strong className="text-white font-semibold">JUPES</strong>,{' '}
-          <strong className="text-white font-semibold">Juventude F.C.</strong> e{' '}
-          <strong className="text-white font-semibold">JUREF</strong> se unem por uma causa especial:{' '}
-          proporcionar alegria, brincadeiras e momentos inesquecíveis para nossas crianças.
-        </motion.p>
+          {/* Soft ambient center glow */}
+          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[500px] h-48 bg-white/[0.05] blur-3xl rounded-full z-0" />
+
+          {/* Strong headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="relative z-10 font-heading font-black text-4xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.08] max-w-4xl drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]"
+          >
+            Juntos pela nossa <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-100 to-zinc-400 drop-shadow-[0_4px_20px_rgba(255,255,255,0.15)]">
+              criançada.
+            </span>
+          </motion.h1>
+
+          {/* Subtitle text */}
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative z-10 mt-6 text-base sm:text-xl text-zinc-300 max-w-2xl font-normal leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+          >
+            <strong className="text-white font-semibold">JUPES</strong>,{' '}
+            <strong className="text-white font-semibold">Juventude F.C.</strong> e{' '}
+            <strong className="text-white font-semibold">JUREF</strong> se unem por uma causa especial:{' '}
+            proporcionar alegria, brincadeiras e momentos inesquecíveis para nossas crianças.
+          </motion.p>
+        </div>
 
         {/* Big CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto"
+          className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto relative z-10"
         >
           <button
             onClick={onDonateClick}
@@ -90,7 +108,7 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-zinc-400 font-medium"
+          className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-zinc-400 font-medium relative z-10"
         >
           <span className="flex items-center gap-1.5 text-zinc-300">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
@@ -105,7 +123,7 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
-          className="w-full mt-10 sm:mt-14"
+          className="w-full mt-10 sm:mt-14 relative z-10"
         >
           <GroupLogosBanner />
         </motion.div>

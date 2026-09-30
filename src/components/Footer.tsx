@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
         <div className="flex items-center gap-3 text-xs tracking-[0.3em] font-heading font-black text-white uppercase mb-4">
           <span>JUREF</span>
           <span className="text-zinc-600 font-normal">•</span>
-          <span>J.U.P.E.S.</span>
+          <span>JUPES</span>
           <span className="text-zinc-600 font-normal">•</span>
           <span>JUVENTUDE F.C.</span>
         </div>
@@ -40,11 +40,17 @@ export const Footer: React.FC = () => {
 
         {/* Back to top & credits */}
         <div className="mt-10 pt-8 border-t border-zinc-900/80 w-full flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-          <p className="flex items-center gap-1.5 justify-center sm:justify-start">
-            <span>Feito com amor e união</span>
-            <Heart className="w-3.5 h-3.5 text-zinc-400 fill-zinc-400" />
-            <span>pela comunidade de Curitiba</span>
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
+            <p className="flex items-center gap-1.5 justify-center sm:justify-start">
+              <span>Feito com amor e união</span>
+              <Heart className="w-3.5 h-3.5 text-zinc-400 fill-zinc-400" />
+              <span>pela comunidade de Curitiba</span>
+            </p>
+            <span className="hidden sm:inline text-zinc-700">•</span>
+            <p className="text-zinc-300 font-medium">
+              Feito por <span className="text-white font-semibold">Nicolas Couti</span>
+            </p>
+          </div>
 
           <button
             onClick={scrollToTop}
