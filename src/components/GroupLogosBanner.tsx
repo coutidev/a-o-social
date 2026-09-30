@@ -29,7 +29,7 @@ export const GroupLogosBanner: React.FC<GroupLogosBannerProps> = ({
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
           <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-zinc-300">
-            União Oficial: JUREF • J.U.P.E.S. • JUVENTUDE F.C.
+            União Oficial: JUREF • JUPES • JUVENTUDE F.C.
           </p>
         </div>
 
@@ -45,22 +45,6 @@ export const GroupLogosBanner: React.FC<GroupLogosBannerProps> = ({
           className="max-w-full max-h-full object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)] transition-transform duration-500 hover:scale-[1.02]"
           loading="eager"
         />
-      </div>
-
-      {/* Caption bottom bar with each group's label */}
-      <div className="mt-4 pt-3 border-t border-zinc-850 grid grid-cols-3 text-center text-xs divide-x divide-zinc-850">
-        <div className="px-2">
-          <span className="font-heading font-black text-white tracking-wider block text-xs sm:text-sm">JUREF</span>
-          <span className="text-[10px] sm:text-[11px] text-zinc-400 block">Lobo &amp; Estrelas</span>
-        </div>
-        <div className="px-2">
-          <span className="font-heading font-black text-white tracking-wider block text-xs sm:text-sm">J.U.P.E.S.</span>
-          <span className="text-[10px] sm:text-[11px] text-zinc-400 block">Águia &amp; Cruz</span>
-        </div>
-        <div className="px-2">
-          <span className="font-heading font-black text-white tracking-wider block text-xs sm:text-sm">JUVENTUDE F.C.</span>
-          <span className="text-[10px] sm:text-[11px] text-zinc-400 block">Curitiba 1981</span>
-        </div>
       </div>
     </div>
   );
