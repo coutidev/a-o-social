@@ -52,16 +52,16 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
           {/* Soft ambient center glow */}
           <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[500px] h-48 bg-white/[0.05] blur-3xl rounded-full z-0" />
 
-          {/* Strong headline */}
+          {/* Strong headline in authentic Brazilian Pixo Reto */}
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="relative z-10 font-heading font-black text-4xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.08] max-w-4xl drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]"
+            className="relative z-10 font-pixo text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-[0.06em] sm:tracking-[0.1em] leading-[1.1] max-w-4xl drop-shadow-[0_4px_25px_rgba(0,0,0,0.95)]"
           >
-            Juntos pela nossa <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-100 to-zinc-400 drop-shadow-[0_4px_20px_rgba(255,255,255,0.15)]">
-              criançada.
+            JUNTOS PELA NOSSA <br className="hidden sm:inline" />
+            <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.4)]">
+              CRIANÇADA
             </span>
           </motion.h1>
 
