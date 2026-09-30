@@ -19,11 +19,11 @@ export const Header: React.FC<HeaderProps> = ({ onDonateClick }) => {
         >
           <div className="flex items-center gap-2">
             <span className="inline-block w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)] animate-pulse" />
-            <span className="bubble-graffiti text-2xl sm:text-3xl tracking-wide text-white group-hover:scale-105 transition-transform origin-left select-none">
+            <span className="font-anton text-2xl sm:text-3xl tracking-tight text-white group-hover:scale-105 transition-transform origin-left select-none uppercase">
               AÇÃO SOCIAL
             </span>
           </div>
-          <span className="text-[10px] sm:text-xs tracking-[0.2em] text-zinc-400 font-semibold group-hover:text-white transition-colors">
+          <span className="text-xs sm:text-sm tracking-[0.2em] text-zinc-400 font-semibold group-hover:text-white transition-colors uppercase">
             JUPES • JUVENTUDE • JUREF
           </span>
         </a>

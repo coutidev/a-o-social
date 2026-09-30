@@ -1,52 +1,59 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Pixo Reto';
-  src: url('/fonts/pixo-reto.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-.font-pixo {
-  font-family: 'Pixo Reto', sans-serif;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.font-marker {
-  font-family: 'Permanent Marker', cursive, system-ui, sans-serif;
-}
-
-.font-urban-poster {
-  font-family: 'Bebas Neue', 'Space Grotesk', system-ui, sans-serif;
-  letter-spacing: 0.04em;
-}
-
 @layer base {
   :root {
     color-scheme: dark;
   }
 
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Barlow Condensed', sans-serif;
     background-color: #050505;
     color: #f4f4f5;
     overflow-x: hidden;
+    letter-spacing: 0.015em;
   }
 
-  h1, h2, h3, .font-heading {
-    font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
+  h1, h2, h3, h4, .font-heading, .titulo {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.015em;
   }
+
+  p, span, a, input, textarea {
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  button {
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.04em;
+  }
+}
+
+.font-anton {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+}
+
+.font-archivo {
+  font-family: 'Archivo Black', sans-serif;
+  text-transform: uppercase;
+}
+
+.font-spray {
+  font-family: 'Rubik Spray Paint', cursive, sans-serif;
+}
+
+.font-marker {
+  font-family: 'Permanent Marker', cursive, sans-serif;
 }
 
 .font-bomb {
-  font-family: 'Modak', 'DynaPuff', cursive, system-ui, sans-serif;
-  letter-spacing: 0.03em;
+  font-family: 'Modak', cursive, sans-serif;
 }
 
 .bubble-graffiti {
-  font-family: 'Modak', 'DynaPuff', cursive, system-ui, sans-serif;
+  font-family: 'Modak', cursive, sans-serif;
   line-height: 1;
   letter-spacing: 0.02em;
   color: #ffffff;

@@ -21,7 +21,7 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
           initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 px-4 py-2 rounded-full border border-zinc-700/80 bg-zinc-950/90 backdrop-blur-md mb-6 shadow-lg"
+          className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 px-4 py-2 rounded-full border border-zinc-700/80 bg-zinc-950/90 backdrop-blur-md mb-5 shadow-lg"
         >
           <div className="flex items-center gap-1.5 text-white font-bold text-xs sm:text-sm">
             <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
@@ -35,11 +35,11 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
         </motion.div>
 
         {/* Headline & Subtle Watermark Container */}
-        <div className="relative w-full max-w-4xl flex flex-col items-center">
+        <div className="relative w-full max-w-5xl flex flex-col items-center">
           
           {/* Subtle Watermark: The 3 official group emblems behind the words, softened for maximum legibility */}
           <div 
-            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[580px] md:w-[700px] max-w-full aspect-[2.7/1] select-none z-0 opacity-12 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_75%)]"
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[620px] md:w-[740px] max-w-full aspect-[2.7/1] select-none z-0 opacity-12 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_75%)]"
             aria-hidden="true"
           >
             <img
@@ -50,27 +50,27 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
           </div>
 
           {/* Dark backdrop vignette behind the letters to guarantee 100% clear readability */}
-          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[600px] h-48 bg-black/60 blur-2xl rounded-full z-0" />
+          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[620px] h-48 bg-black/60 blur-2xl rounded-full z-0" />
 
-          {/* High-Impact Headline: 100% visible, crisp, bold & clear */}
+          {/* High-Impact Headline in Anton: pesada, condensada, pôster / camisa de torcida / lambe-lambe */}
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="relative z-10 font-heading font-black text-4xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.08] max-w-4xl [text-shadow:_0_3px_20px_rgba(0,0,0,1),_0_0_35px_rgba(255,255,255,0.2)]"
+            className="relative z-10 font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-tight leading-[0.92] max-w-5xl [text-shadow:_0_4px_30px_rgba(0,0,0,1)] uppercase"
           >
-            Juntos pela nossa <br className="hidden sm:inline" />
-            <span className="text-white drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]">
-              criançada.
+            JUNTOS PELA NOSSA <br className="hidden sm:inline" />
+            <span className="text-white drop-shadow-[0_0_35px_rgba(255,255,255,0.35)]">
+              CRIANÇADA.
             </span>
           </motion.h1>
 
-          {/* Subtitle text */}
+          {/* Subtitle text in Barlow Condensed */}
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative z-10 mt-6 text-base sm:text-xl text-zinc-300 max-w-2xl font-normal leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+            className="relative z-10 mt-6 text-lg sm:text-2xl text-zinc-300 max-w-2xl font-normal leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
           >
             <strong className="text-white font-semibold">JUPES</strong>,{' '}
             <strong className="text-white font-semibold">Juventude F.C.</strong> e{' '}
@@ -79,7 +79,7 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
           </motion.p>
         </div>
 
-        {/* Big CTA Buttons */}
+        {/* Big CTA Buttons with Barlow Condensed */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
         >
           <button
             onClick={onDonateClick}
-            className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-4.5 rounded-2xl bg-white text-black font-extrabold text-base sm:text-lg tracking-wide shadow-[0_0_35px_rgba(255,255,255,0.25)] hover:bg-zinc-100 hover:shadow-[0_0_50px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-4.5 rounded-2xl bg-white text-black font-bold text-lg sm:text-xl tracking-wider shadow-[0_0_35px_rgba(255,255,255,0.25)] hover:bg-zinc-100 hover:shadow-[0_0_50px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer uppercase"
           >
             <QrCode className="w-5 h-5 text-black" />
             <span>FAZER UMA DOAÇÃO (VALOR LIVRE)</span>
@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
 
           <button
             onClick={onLearnMoreClick}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl border border-zinc-800 bg-zinc-950/60 hover:bg-zinc-900 text-zinc-300 hover:text-white font-medium text-sm sm:text-base transition-all duration-200 cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl border border-zinc-800 bg-zinc-950/60 hover:bg-zinc-900 text-zinc-300 hover:text-white font-semibold text-base sm:text-lg transition-all duration-200 cursor-pointer uppercase tracking-wider"
           >
             <span>Informações do Evento</span>
           </button>
@@ -108,7 +108,7 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-zinc-400 font-medium relative z-10"
+          className="mt-4 flex flex-wrap items-center justify-center gap-2 text-sm text-zinc-400 font-medium relative z-10"
         >
           <span className="flex items-center gap-1.5 text-zinc-300">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
