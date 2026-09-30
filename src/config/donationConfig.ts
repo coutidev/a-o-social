@@ -56,8 +56,8 @@ export const DONATION_CONFIG: DonationConfig = {
   eventCity: "Curitiba - PR",
   eventGoogleMapsQuery: "https://www.google.com/maps/search/?api=1&query=Praça+Napoleão+Côrtes+Filho",
 
-  // Caminho do vetor dos três emblemas idênticos à imagem enviada
-  groupsLogoUrl: "/logos-unidos.svg",
+  // Imagem oficial dos três emblemas (enviada via Imgur e salva no projeto)
+  groupsLogoUrl: "/logos-unidos.png",
 
   pixQrCodeImageUrl: null,
 
