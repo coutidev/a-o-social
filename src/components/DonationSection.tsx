@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import QRCode from 'qrcode';
 import { DONATION_CONFIG } from '../config/donationConfig';
+import { DonationThankYouModal } from './DonationThankYouModal';
 import { 
   Copy, 
   Check, 
   QrCode as QrIcon, 
   ShieldCheck, 
-  Smartphone, 
   Sparkles,
-  ChevronDown
+  ChevronDown,
+  Heart
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -16,8 +17,9 @@ export const DonationSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [qrCodeSvg, setQrCodeSvg] = useState<string>('');
   const [showInstructions, setShowInstructions] = useState(false);
-  const [customPixCode, setCustomPixCode] = useState(DONATION_CONFIG.pixCopyPasteCode);
-  const [customQrImage, setCustomQrImage] = useState<string | null>(DONATION_CONFIG.pixQrCodeImageUrl);
+  const [customPixCode] = useState(DONATION_CONFIG.pixCopyPasteCode);
+  const [customQrImage] = useState<string | null>(DONATION_CONFIG.pixQrCodeImageUrl);
+  const [isThankYouOpen, setIsThankYouOpen] = useState(false);
 
   // Generate QR Code SVG dynamically from the PIX payload
   useEffect(() => {
@@ -67,15 +69,10 @@ export const DonationSection: React.FC = () => {
 
       setTimeout(() => {
         setCopied(false);
-      }, 4500);
+      }, 5000);
     } catch (err) {
       console.error('Falha ao copiar PIX:', err);
     }
-  };
-
-  const handleDonateNow = () => {
-    handleCopyPix();
-    setShowInstructions(true);
   };
 
   return (
@@ -161,6 +158,17 @@ export const DonationSection: React.FC = () => {
               </div>
             </div>
 
+            {/* Quick secondary button right under QR code for phone scanners */}
+            <div className="mt-4">
+              <button
+                onClick={() => setIsThankYouOpen(true)}
+                className="group inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-zinc-700/80 bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 hover:text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 hover:border-zinc-500 shadow-md active:scale-95 cursor-pointer"
+              >
+                <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 group-hover:scale-110 transition-transform" />
+                <span>Já fiz minha doação ❤️</span>
+              </button>
+            </div>
+
           </div>
 
           {/* ========================================================================= */}
@@ -202,7 +210,7 @@ export const DonationSection: React.FC = () => {
                 {copied ? (
                   <>
                     <Check className="w-4 h-4 stroke-[3]" />
-                    <span>COPIADO!</span>
+                    <span>PIX COPIADO!</span>
                   </>
                 ) : (
                   <>
@@ -214,7 +222,7 @@ export const DonationSection: React.FC = () => {
 
             </div>
 
-            {/* Dynamic Success Alert Banner */}
+            {/* Dynamic Success Alert Banner with Invitation to Confirm */}
             <AnimatePresence>
               {copied && (
                 <motion.div
@@ -224,26 +232,63 @@ export const DonationSection: React.FC = () => {
                   transition={{ duration: 0.3 }}
                   className="mt-3 overflow-hidden"
                 >
-                  <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-xs sm:text-sm font-medium">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0 stroke-[2.5]" />
-                    <span>
-                      <strong>PIX copiado com sucesso!</strong> Agora abra seu banco, cole na opção <em>Pix Copia e Cola</em> e digite a quantia que quiser enviar.
-                    </span>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-2xl bg-zinc-900/95 border border-emerald-500/50 text-emerald-200 text-xs sm:text-sm shadow-xl">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                        <Check className="w-4 h-4 text-emerald-400 stroke-[2.5]" />
+                      </div>
+                      <div>
+                        <strong className="text-white block font-semibold">PIX copiado com sucesso!</strong>
+                        <span className="text-zinc-300 text-xs">
+                          Cole no seu banco e digite qualquer quantia. Já completou a transferência?
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => setIsThankYouOpen(true)}
+                      className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider hover:bg-zinc-200 transition-all cursor-pointer shadow active:scale-95"
+                    >
+                      <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
+                      <span>Já fiz minha doação ❤️</span>
+                    </button>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* Primary Big CTA "DOE AGORA" */}
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Primary Action Buttons Bar */}
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+              {/* Primary Copy Button */}
               <button
-                onClick={handleDonateNow}
-                className="w-full sm:w-auto min-w-[280px] group relative inline-flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl bg-white text-black font-heading font-black text-lg tracking-wider shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:bg-zinc-100 hover:shadow-[0_0_55px_rgba(255,255,255,0.45)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                onClick={handleCopyPix}
+                className="w-full sm:w-auto min-w-[220px] group relative inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white text-black font-anton text-base tracking-wide uppercase shadow-[0_0_35px_rgba(255,255,255,0.25)] hover:bg-zinc-100 hover:shadow-[0_0_50px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
-                <Smartphone className="w-5 h-5 text-black" />
-                <span>DOE AGORA</span>
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4 stroke-[3]" />
+                    <span>PIX COPIADO!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4" />
+                    <span>COPIAR CÓDIGO PIX</span>
+                  </>
+                )}
               </button>
 
+              {/* Secondary Dedicated Button: Já fiz minha doação ❤️ */}
+              <button
+                onClick={() => setIsThankYouOpen(true)}
+                className="w-full sm:w-auto min-w-[220px] group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl border-2 border-zinc-700 hover:border-zinc-500 bg-zinc-900/90 hover:bg-zinc-800 text-white font-anton text-base tracking-wide uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg"
+              >
+                <Heart className="w-4 h-4 text-red-500 fill-red-500 group-hover:scale-125 transition-transform" />
+                <span>JÁ FIZ MINHA DOAÇÃO ❤️</span>
+              </button>
+            </div>
+
+            {/* Step-by-Step Instructions Toggle */}
+            <div className="mt-5 text-center">
               <button
                 onClick={() => setShowInstructions(!showInstructions)}
                 className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors py-2 cursor-pointer"
@@ -303,6 +348,12 @@ export const DonationSection: React.FC = () => {
         </div>
 
       </div>
+
+      {/* Modern Slide-Up Thank You Modal */}
+      <DonationThankYouModal
+        isOpen={isThankYouOpen}
+        onClose={() => setIsThankYouOpen(false)}
+      />
     </section>
   );
 };
