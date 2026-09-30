@@ -95,11 +95,6 @@ export const InstagramSection: React.FC = () => {
                   <span className="text-zinc-500 font-normal">ig/</span>
                   <span className="text-white">{group.handle}</span>
                 </div>
-
-                {/* Description */}
-                <p className="mt-4 text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
-                  {group.description}
-                </p>
               </div>
 
               {/* Action pill in footer of card */}

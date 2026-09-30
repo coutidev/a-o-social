@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
             <p className="flex items-center gap-1.5 justify-center sm:justify-start">
               <span>Feito com amor e união</span>
               <Heart className="w-3.5 h-3.5 text-zinc-400 fill-zinc-400" />
-              <span>pela comunidade de Curitiba</span>
+              <span>pela comunidade do Sítio Cercado</span>
             </p>
             <span className="hidden sm:inline text-zinc-700">•</span>
             <p className="text-zinc-300 font-medium">
