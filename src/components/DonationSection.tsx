@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import QRCode from 'qrcode';
 import { DONATION_CONFIG } from '../config/donationConfig';
 import { DonationThankYouModal } from './DonationThankYouModal';
+import { ToyProgressBar } from './ToyProgressBar';
 import { 
   Copy, 
   Check, 
@@ -102,6 +103,9 @@ export const DonationSection: React.FC = () => {
             O Pix não tem valor pré-determinado: no aplicativo do seu banco você escolhe livremente a quantia que puder e desejar enviar.
           </p>
         </div>
+
+        {/* Estimated Toy Fundraising Progress Bar */}
+        <ToyProgressBar className="mb-10 sm:mb-12" />
 
         {/* ========================================================================= */}
         {/* CENTERPIECE: The Grand Donation Frame with Subtle Light Effect */}

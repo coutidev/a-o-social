@@ -31,6 +31,13 @@ export interface DonationConfig {
   receiverName: string;
   receiverCity: string;
 
+  // Meta Pix
+  pixGoal: {
+    current: number;
+    targetLabel?: string;
+    target?: number;
+  };
+
   groups: {
     id: string;
     name: string;
@@ -74,6 +81,12 @@ export const DONATION_CONFIG: DonationConfig = {
 
   receiverName: "Ação Social Conjunta (JUPES • Juventude F.C. • JUREF)",
   receiverCity: "Curitiba - PR",
+
+  // Meta Pix zerada para início da arrecadação
+  pixGoal: {
+    current: 0,
+    targetLabel: "O que vier é bênção",
+  },
 
   groups: [
     {
