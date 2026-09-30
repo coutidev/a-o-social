@@ -1,5 +1,5 @@
 import React from 'react';
-import { QrCode, Sparkles, Heart } from 'lucide-react';
+import { QrCode, Heart } from 'lucide-react';
 import { motion } from 'motion/react';
 import { DONATION_CONFIG } from '../config/donationConfig';
 
@@ -53,12 +53,6 @@ export const ToyProgressBar: React.FC<PixProgressBarProps> = ({
             </p>
           </div>
         </div>
-
-        {/* Highlight Goal Badge: O que vier é bênção */}
-        <div className="inline-flex items-center gap-2 self-start sm:self-center px-3.5 py-1.5 rounded-full bg-white text-black font-anton text-xs sm:text-sm tracking-wider uppercase shadow-md">
-          <Sparkles className="w-3.5 h-3.5 text-black" />
-          <span>Meta: “{targetLabel}”</span>
-        </div>
       </div>
 
       {/* Community Momentum Bar (Campanha Aberta / Valor Livre) */}
@@ -87,7 +81,7 @@ export const ToyProgressBar: React.FC<PixProgressBarProps> = ({
 
           <div className="flex items-center gap-1.5 text-zinc-300">
             <span className="text-zinc-400">Objetivo:</span>
-            <strong className="text-white font-semibold">“{targetLabel}”</strong>
+            <strong className="text-white font-semibold">{targetLabel}</strong>
           </div>
         </div>
       </div>
