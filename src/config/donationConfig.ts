@@ -106,8 +106,8 @@ export const DONATION_CONFIG: DonationConfig = {
     },
     {
       id: "jupes",
-      name: "J.U.P.E.S.",
-      fullName: "Grupo J.U.P.E.S.",
+      name: "JUPES",
+      fullName: "Grupo JUPES",
       handle: "@jupesneles",
       instagramUrl: "https://www.instagram.com/jupesneles/",
       description: "Fé, esperança e dedicação contínua às famílias.",
