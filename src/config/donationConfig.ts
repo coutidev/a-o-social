@@ -90,7 +90,7 @@ export const DONATION_CONFIG: DonationConfig = {
 
   // Meta Pix com valor arrecadado
   pixGoal: {
-    current: 90,
+    current: 190,
     targetLabel: "O que vier é bênção",
   },
 
