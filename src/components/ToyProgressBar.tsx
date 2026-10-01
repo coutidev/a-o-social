@@ -93,7 +93,7 @@ export const ToyProgressBar: React.FC<PixProgressBarProps> = ({
           <span>Qualquer quantia fortalece a compra de brinquedos e lanches.</span>
         </div>
         <span className="text-zinc-500 font-medium hidden sm:inline shrink-0">
-          Los Manos • Sítio Cercado
+          Penetras • Sítio Cercado
         </span>
       </div>
     </motion.div>

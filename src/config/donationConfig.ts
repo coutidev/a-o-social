@@ -11,7 +11,7 @@ export interface DonationConfig {
   // Informações do Evento
   eventDateFormatted: string; // "18 de Outubro"
   eventDateShort: string;     // "18/10"
-  eventLocationName: string;  // "Praça Napoleão Côrtes Filho (Los Manos)"
+  eventLocationName: string; // "Praça Professora Marli Queiroz de Azevedo (Penetras)"
   eventCity: string;          // "Curitiba - PR"
   eventGoogleMapsQuery: string;
 
@@ -20,6 +20,9 @@ export interface DonationConfig {
 
   // Imagem do QR Code PIX (opcional, null gera o código dinamicamente)
   pixQrCodeImageUrl: string | null;
+
+  // Chave Pix Oficial em formato E-mail
+  pixEmail: string;
 
   // Código PIX Copia e Cola completo (SEM VALOR FIXO - a pessoa digita no banco)
   pixCopyPasteCode: string;
@@ -59,27 +62,30 @@ export const DONATION_CONFIG: DonationConfig = {
   // Detalhes do Grande Dia da Ação Social
   eventDateFormatted: "18 de Outubro",
   eventDateShort: "18/10",
-  eventLocationName: "Praça Napoleão Côrtes Filho (Los Manos)",
+  eventLocationName: "Praça Professora Marli Queiroz de Azevedo (Penetras)",
   eventCity: "Curitiba - PR",
-  eventGoogleMapsQuery: "https://www.google.com/maps/search/?api=1&query=Praça+Napoleão+Côrtes+Filho",
+  eventGoogleMapsQuery: "https://share.google/XOEMQ7eKsFphSNAQV",
 
   // Imagem oficial dos três emblemas (enviada via Imgur e salva no projeto)
   groupsLogoUrl: "/logos-unidos.png",
 
-  pixQrCodeImageUrl: null,
+  // Imagem oficial do QR Code Pix enviada pelo organizador
+  pixQrCodeImageUrl: "/pix-qrcode.png",
+
+  // Chave Pix Oficial em formato E-mail
+  pixEmail: "juvetvnaarea@gmail.com",
 
   /**
-   * CÓDIGO PIX COPIA E COLA SEM VALOR FIXO
-   * Permite que o doador digite livremente o valor no aplicativo do banco.
-   * Substitua este código pelo código gerado na sua conta bancária quando estiver com ele em mãos.
+   * CÓDIGO PIX COPIA E COLA / BR CODE SEM VALOR FIXO
+   * Vinculado à chave e-mail: juvetvnaarea@gmail.com
    */
   pixCopyPasteCode:
-    "00020126580014BR.GOV.BCB.PIX0136acaosocial.curitiba.unidos@gmail.com5204000053039865802BR5925ACAO SOCIAL JUPES JUREF6008CURITIBA62070503***63041A2F",
+    "00020126440014BR.GOV.BCB.PIX0122juvetvnaarea@gmail.com5204000053039865802BR5918ACAO SOCIAL UNIDOS6008CURITIBA62070503***63049BE2",
 
-  pixKeyDisplay: "acaosocial.curitiba.unidos@gmail.com",
-  pixKeyType: "Chave Pix Oficial (Qualquer Valor)",
+  pixKeyDisplay: "juvetvnaarea@gmail.com",
+  pixKeyType: "Chave Pix (E-mail)",
 
-  receiverName: "Ação Social Conjunta (JUPES • Juventude F.C. • JUREF)",
+  receiverName: "GABRIELLA VITORIA GERVIKAS",
   receiverCity: "Curitiba - PR",
 
   // Meta Pix zerada para início da arrecadação

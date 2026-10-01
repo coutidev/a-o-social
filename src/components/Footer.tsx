@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
 
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-semibold text-zinc-400">
             <MapPin className="w-3.5 h-3.5 text-zinc-300" />
-            <span>Praça Napoleão Côrtes Filho (Los Manos)</span>
+            <span>{DONATION_CONFIG.eventLocationName}</span>
           </div>
         </div>
 

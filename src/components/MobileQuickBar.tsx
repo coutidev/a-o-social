@@ -29,7 +29,7 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ onDonateClick })
     e.stopPropagation();
     try {
       if (navigator.clipboard) {
-        await navigator.clipboard.writeText(DONATION_CONFIG.pixCopyPasteCode);
+        await navigator.clipboard.writeText(DONATION_CONFIG.pixEmail);
       }
       setCopied(true);
       if (navigator.vibrate) navigator.vibrate(40);
@@ -64,12 +64,12 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ onDonateClick })
               {copied ? (
                 <>
                   <Check className="w-4 h-4 stroke-[3]" />
-                  <span>PIX COPIADO!</span>
+                  <span>CHAVE COPIADA!</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-4 h-4" />
-                  <span>Copiar Pix</span>
+                  <span>Copiar Chave Pix</span>
                 </>
               )}
             </button>

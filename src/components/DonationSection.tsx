@@ -10,7 +10,8 @@ import {
   ShieldCheck, 
   Sparkles,
   ChevronDown,
-  Heart
+  Heart,
+  Mail
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -46,14 +47,15 @@ export const DonationSection: React.FC = () => {
     };
   }, [customPixCode]);
 
-  // Handle Copy PIX
+  // Handle Copy PIX Key (E-mail: juvetvnaarea@gmail.com)
   const handleCopyPix = async () => {
     try {
+      const emailToCopy = DONATION_CONFIG.pixEmail;
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(customPixCode);
+        await navigator.clipboard.writeText(emailToCopy);
       } else {
         const textarea = document.createElement('textarea');
-        textarea.value = customPixCode;
+        textarea.value = emailToCopy;
         textarea.style.position = 'fixed';
         textarea.style.opacity = '0';
         document.body.appendChild(textarea);
@@ -143,20 +145,22 @@ export const DonationSection: React.FC = () => {
                 </div>
               )}
 
-              {/* Central small brand emblem inside QR code */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black text-white px-2 py-0.5 rounded-md font-heading font-black text-[10px] tracking-wider border border-white shadow-md pointer-events-none">
-                PIX
-              </div>
+              {/* Central small brand emblem inside QR code - only if generating SVG dynamically */}
+              {!customQrImage && (
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black text-white px-2 py-0.5 rounded-md font-heading font-black text-[10px] tracking-wider border border-white shadow-md pointer-events-none">
+                  PIX
+                </div>
+              )}
             </div>
 
             {/* Recipient verification info */}
             <div className="mt-4 text-center">
-              <p className="text-sm font-semibold text-zinc-200">
+              <p className="font-heading font-black text-base sm:text-lg text-white tracking-wide uppercase">
                 {DONATION_CONFIG.receiverName}
               </p>
-              <div className="flex items-center justify-center gap-2 text-xs text-zinc-400 mt-0.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Conta verificada da Ação Social</span>
+              <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-xs text-zinc-400 mt-1">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-zinc-300 font-medium">Titular da Conta Pix • Ação Social</span>
                 <span>•</span>
                 <span>{DONATION_CONFIG.receiverCity}</span>
               </div>
@@ -176,7 +180,7 @@ export const DonationSection: React.FC = () => {
           </div>
 
           {/* ========================================================================= */}
-          {/* PIX COPIA E COLA SECTION */}
+          {/* PIX CHAVE E-MAIL SECTION */}
           {/* ========================================================================= */}
           <div className="mt-8 pt-8 border-t border-zinc-800">
             
@@ -184,25 +188,38 @@ export const DonationSection: React.FC = () => {
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-white" />
                 <h3 className="font-heading font-bold text-sm sm:text-base uppercase tracking-wider text-white">
-                  PIX COPIA E COLA (VALOR LIVRE)
+                  CHAVE PIX (E-MAIL) • VALOR LIVRE
                 </h3>
               </div>
               <span className="text-xs text-zinc-400 hidden sm:inline">
-                A pessoa digita quanto quer doar no app
+                A pessoa digita quanto quer doar no app do banco
               </span>
             </div>
 
-            {/* The Code Box + Copy Button */}
-            <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-2.5 sm:p-3 rounded-2xl bg-zinc-900/90 border border-zinc-700/80 transition-all focus-within:border-zinc-500">
+            {/* The Email Key Box + Copy Button */}
+            <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-zinc-900/90 border border-zinc-700/80 transition-all focus-within:border-zinc-500 shadow-inner">
               
-              {/* Truncated / Scrollable Raw PIX text */}
-              <div className="flex-1 px-3 py-2 overflow-hidden">
-                <div className="text-[11px] sm:text-xs font-mono text-zinc-300 break-all select-all line-clamp-2 sm:line-clamp-1">
-                  {customPixCode}
+              {/* Mail Icon + Email display */}
+              <div className="flex items-center gap-3.5 px-2 py-1 overflow-hidden min-w-0">
+                <div className="w-10 h-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center shrink-0 text-white">
+                  <Mail className="w-5 h-5 text-white" />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-wider text-zinc-400">
+                      Chave Pix Oficial
+                    </span>
+                    <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700">
+                      E-mail
+                    </span>
+                  </div>
+                  <div className="text-base sm:text-lg md:text-xl font-mono font-bold text-white select-all truncate mt-0.5">
+                    {DONATION_CONFIG.pixEmail}
+                  </div>
                 </div>
               </div>
 
-              {/* COPIAR PIX Button */}
+              {/* COPIAR CHAVE PIX Button */}
               <button
                 onClick={handleCopyPix}
                 className={`relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all duration-200 shrink-0 cursor-pointer ${
@@ -214,12 +231,12 @@ export const DonationSection: React.FC = () => {
                 {copied ? (
                   <>
                     <Check className="w-4 h-4 stroke-[3]" />
-                    <span>PIX COPIADO!</span>
+                    <span>CHAVE COPIADA!</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-4 h-4" />
-                    <span>COPIAR PIX</span>
+                    <span>COPIAR CHAVE PIX</span>
                   </>
                 )}
               </button>
@@ -242,9 +259,9 @@ export const DonationSection: React.FC = () => {
                         <Check className="w-4 h-4 text-emerald-400 stroke-[2.5]" />
                       </div>
                       <div>
-                        <strong className="text-white block font-semibold">PIX copiado com sucesso!</strong>
+                        <strong className="text-white block font-semibold">Chave Pix copiada com sucesso! ({DONATION_CONFIG.pixEmail})</strong>
                         <span className="text-zinc-300 text-xs">
-                          Cole no seu banco e digite qualquer quantia. Já completou a transferência?
+                          Cole no seu banco escolhendo a opção <strong>Pix por E-mail</strong> e digite qualquer quantia.
                         </span>
                       </div>
                     </div>
@@ -266,17 +283,17 @@ export const DonationSection: React.FC = () => {
               {/* Primary Copy Button */}
               <button
                 onClick={handleCopyPix}
-                className="w-full sm:w-auto min-w-[220px] group relative inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white text-black font-anton text-base tracking-wide uppercase shadow-[0_0_35px_rgba(255,255,255,0.25)] hover:bg-zinc-100 hover:shadow-[0_0_50px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                className="w-full sm:w-auto min-w-[240px] group relative inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white text-black font-anton text-base tracking-wide uppercase shadow-[0_0_35px_rgba(255,255,255,0.25)] hover:bg-zinc-100 hover:shadow-[0_0_50px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
                 {copied ? (
                   <>
                     <Check className="w-4 h-4 stroke-[3]" />
-                    <span>PIX COPIADO!</span>
+                    <span>CHAVE COPIADA!</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-4 h-4" />
-                    <span>COPIAR CÓDIGO PIX</span>
+                    <span>COPIAR CHAVE PIX (E-MAIL)</span>
                   </>
                 )}
               </button>
@@ -297,7 +314,7 @@ export const DonationSection: React.FC = () => {
                 onClick={() => setShowInstructions(!showInstructions)}
                 className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors py-2 cursor-pointer"
               >
-                <span>Como funciona o Pix com valor livre?</span>
+                <span>Como doar usando a chave Pix e-mail?</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showInstructions ? 'rotate-180' : ''}`} />
               </button>
             </div>
@@ -317,9 +334,9 @@ export const DonationSection: React.FC = () => {
                       <div className="h-6 w-6 rounded-full bg-white text-black flex items-center justify-center font-bold text-xs mb-2">
                         1
                       </div>
-                      <h4 className="text-xs font-bold text-white mb-1">Copie o Código</h4>
+                      <h4 className="text-xs font-bold text-white mb-1">Copie a Chave E-mail</h4>
                       <p className="text-[11px] text-zinc-400 leading-normal">
-                        Clique no botão "COPIAR PIX" para guardar o código na memória do celular.
+                        Clique no botão "COPIAR CHAVE PIX" para copiar o e-mail <strong>{DONATION_CONFIG.pixEmail}</strong>.
                       </p>
                     </div>
 
@@ -329,7 +346,7 @@ export const DonationSection: React.FC = () => {
                       </div>
                       <h4 className="text-xs font-bold text-white mb-1">Abra seu Banco</h4>
                       <p className="text-[11px] text-zinc-400 leading-normal">
-                        Entre no app do seu banco e selecione a opção <em>"Pix Copia e Cola"</em>.
+                        Entre no aplicativo do seu banco, vá na área Pix e selecione a opção <em>"Chave E-mail"</em>.
                       </p>
                     </div>
 
@@ -339,7 +356,7 @@ export const DonationSection: React.FC = () => {
                       </div>
                       <h4 className="text-xs font-bold text-white mb-1">Digite o Valor</h4>
                       <p className="text-[11px] text-zinc-400 leading-normal">
-                        Digite a quantia que quiser doar de coração, confira o recebedor da Ação Social e confirme.
+                        Cole o e-mail, digite a quantia que quiser doar de coração, confira o nome da titular ({DONATION_CONFIG.receiverName}) e confirme.
                       </p>
                     </div>
                   </div>

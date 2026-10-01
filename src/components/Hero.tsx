@@ -1,6 +1,7 @@
 import React from 'react';
 import { GroupLogosBanner } from './GroupLogosBanner';
 import { CountdownTimer } from './CountdownTimer';
+import { DONATION_CONFIG } from '../config/donationConfig';
 import { ArrowDown, QrCode, Calendar, MapPin, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -31,7 +32,7 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
           <span className="text-zinc-600 hidden sm:inline">•</span>
           <div className="flex items-center gap-1.5 text-zinc-300 font-medium text-xs sm:text-sm">
             <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-zinc-400" />
-            <span>Praça Napoleão Côrtes Filho (Los Manos)</span>
+            <span>{DONATION_CONFIG.eventLocationName}</span>
           </div>
         </motion.div>
 

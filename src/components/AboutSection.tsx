@@ -39,7 +39,7 @@ export const AboutSection: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* ========================================================================= */}
-        {/* SPECIAL EVENT ANNOUNCEMENT BOX (18/10 na Praça Napoleão Côrtes Filho) */}
+        {/* SPECIAL EVENT ANNOUNCEMENT BOX (18/10 na Praça Professora Marli Queiroz de Azevedo - Penetras) */}
         {/* ========================================================================= */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -223,7 +223,7 @@ export const AboutSection: React.FC = () => {
           className="mt-12 p-6 rounded-2xl border border-zinc-800 bg-zinc-950 text-center max-w-2xl mx-auto shadow-lg"
         >
           <p className="text-xs sm:text-sm text-zinc-400">
-            <strong className="text-white">Prestação de Contas Aberta:</strong> Todas as fotos, vídeos e a prestação do evento na Praça Napoleão Côrtes Filho (Los Manos) serão compartilhados diretamente nos perfis oficiais do Instagram do JUPES, Juventude e JUREF.
+            <strong className="text-white">Prestação de Contas Aberta:</strong> Todas as fotos, vídeos e a prestação do evento na {DONATION_CONFIG.eventLocationName} serão compartilhados diretamente nos perfis oficiais do Instagram do JUPES, Juventude e JUREF.
           </p>
         </motion.div>
 

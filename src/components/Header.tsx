@@ -33,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({ onDonateClick }) => {
           <Calendar className="w-3.5 h-3.5 text-zinc-300" />
           <span className="text-zinc-200 font-semibold">{DONATION_CONFIG.eventDateShort}</span>
           <span>•</span>
-          <span className="text-zinc-400">Praça Napoleão Côrtes Filho (Los Manos)</span>
+          <span className="text-zinc-400">{DONATION_CONFIG.eventLocationName}</span>
         </div>
 
         {/* Right CTA button */}
