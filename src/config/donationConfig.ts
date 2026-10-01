@@ -88,9 +88,9 @@ export const DONATION_CONFIG: DonationConfig = {
   receiverName: "GABRIELLA VITORIA GERVIKAS",
   receiverCity: "Curitiba - PR",
 
-  // Meta Pix zerada para início da arrecadação
+  // Meta Pix com valor arrecadado
   pixGoal: {
-    current: 0,
+    current: 30,
     targetLabel: "O que vier é bênção",
   },
 
