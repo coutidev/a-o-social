@@ -9,6 +9,7 @@ import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
 import { DonationSection } from './components/DonationSection';
 import { InstagramSection } from './components/InstagramSection';
+import { MessagesSection } from './components/MessagesSection';
 import { Footer } from './components/Footer';
 import { MobileQuickBar } from './components/MobileQuickBar';
 
@@ -51,6 +52,9 @@ export default function App() {
 
         {/* Instagram Groups Section */}
         <InstagramSection />
+
+        {/* Public Messages Wall Section (Supabase Mural) */}
+        <MessagesSection />
       </main>
 
       {/* Footer */}
