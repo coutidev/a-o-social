@@ -12,7 +12,9 @@ import {
   CheckCircle2, 
   Clock, 
   ArrowUpRight,
-  Construction
+  Construction,
+  FolderOpen,
+  ExternalLink
 } from 'lucide-react';
 import { DONATION_CONFIG } from '../config/donationConfig';
 
@@ -352,61 +354,48 @@ export const TransparencyModal: React.FC<TransparencyModalProps> = ({
                   </div>
                 </div>
 
-                {/* Detailed Table */}
-                <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 overflow-hidden">
-                  <div className="px-5 py-4 border-b border-zinc-800 flex items-center justify-between">
-                    <h3 className="font-bold text-white text-sm sm:text-base tracking-wide uppercase">
-                      Planejamento de Destinação dos Recursos
+                {/* Google Drive Official Folder */}
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 sm:p-8 text-center space-y-4">
+                  <div className="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700 flex items-center justify-center mx-auto text-white">
+                    <FolderOpen className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-anton text-xl sm:text-2xl text-white uppercase tracking-tight">
+                      Comprovantes & Notas Fiscais no Drive
                     </h3>
-                    <span className="text-xs text-zinc-400">
-                      Atualizado em {DONATION_CONFIG.accountability.lastUpdated}
-                    </span>
+                    <p className="text-xs sm:text-sm text-zinc-300 mt-1 max-w-lg mx-auto leading-relaxed">
+                      Todas as notas fiscais, extratos bancários, recibos de compras e comprovantes do Projeto JJJ estão arquivados publicamente na pasta oficial do Google Drive.
+                    </p>
                   </div>
 
-                  <div className="divide-y divide-zinc-800/80">
-                    {DONATION_CONFIG.accountability.allocatedExpenses.map((item, idx) => (
-                      <div key={idx} className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-zinc-900 transition-colors">
-                        <div className="space-y-1 max-w-lg">
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-white text-sm sm:text-base">
-                              {item.category}
-                            </span>
-                            <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-zinc-800 text-zinc-300 border border-zinc-700">
-                              {item.status}
-                            </span>
-                          </div>
-                          <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                            {item.description}
-                          </p>
-                        </div>
-
-                        <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center border-t sm:border-t-0 pt-2 sm:pt-0 border-zinc-800/50">
-                          <span className="font-anton text-lg sm:text-xl text-white">
-                            R$ {item.estimatedOrSpentAmount.toLocaleString('pt-BR')}
-                          </span>
-                          <span className="text-xs text-zinc-400">
-                            ~{item.percentage}% do valor
-                          </span>
-                        </div>
-                      </div>
-                    ))}
+                  <div className="pt-2">
+                    <a
+                      href={DONATION_CONFIG.accountability.driveFolderUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-black font-anton text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg"
+                    >
+                      <FolderOpen className="w-4 h-4 text-black" />
+                      <span>Acessar Pasta Oficial no Google Drive</span>
+                      <ExternalLink className="w-4 h-4 text-black" />
+                    </a>
                   </div>
                 </div>
 
                 <div className="p-5 rounded-2xl bg-zinc-900 border border-zinc-800 space-y-3">
                   <div className="flex items-center gap-2 text-white font-semibold text-sm">
                     <CheckCircle2 className="w-4 h-4 text-white" />
-                    <span>Como funciona a conferência pública:</span>
+                    <span>Transparência aberta a todos:</span>
                   </div>
                   <ul className="text-xs sm:text-sm text-zinc-400 space-y-2 list-disc list-inside">
                     <li>
-                      <strong>Comprovantes de compra:</strong> Todas as notas fiscais de brinquedos, pães, salsichas e locações são arquivadas pela organização.
+                      <strong>Comprovantes de compra:</strong> Notas fiscais de brinquedos, doces, frutas, pipas e locações disponíveis na nuvem.
                     </li>
                     <li>
-                      <strong>Fotos & Vídeos da entrega:</strong> No dia 18/10, todo o evento será registrado e publicado nos perfis oficiais (@juventude1981, @jupesneles e @grupo_juref).
+                      <strong>Fotos & Registros da entrega:</strong> Registros em alta qualidade com autorização e respeito às famílias.
                     </li>
                     <li>
-                      <strong>Dúvidas financeiras:</strong> Qualquer doador ou voluntário pode solicitar esclarecimentos diretamente pelo e-mail oficial: <code className="text-zinc-200 bg-zinc-800 px-1 py-0.5 rounded">{DONATION_CONFIG.pixEmail}</code>.
+                      <strong>Contato direto:</strong> Dúvidas podem ser tiradas pelo e-mail <code className="text-zinc-200 bg-zinc-800 px-1 py-0.5 rounded">{DONATION_CONFIG.pixEmail}</code> ou pelo WhatsApp oficial.
                     </li>
                   </ul>
                 </div>

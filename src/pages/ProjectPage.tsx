@@ -14,7 +14,9 @@ import {
   ChevronRight, 
   ZoomIn, 
   CheckCircle2, 
-  AlertCircle
+  AlertCircle,
+  FolderOpen,
+  ExternalLink
 } from 'lucide-react';
 import { DONATION_CONFIG } from '../config/donationConfig';
 import { GroupLogosBanner } from '../components/GroupLogosBanner';
@@ -444,92 +446,61 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({
               ))}
             </div>
 
-            {/* Tabela de Destinação dos Recursos com Scroll-Triggered Slide-up */}
+            {/* Bloco Oficial de Prestação de Contas no Google Drive */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.55 }}
-              className="p-6 sm:p-8 rounded-3xl bg-zinc-950 border border-zinc-800 space-y-6 pix-subtle-glow"
+              className="p-8 sm:p-12 rounded-3xl bg-zinc-950 border border-zinc-800 text-center space-y-6 pix-subtle-glow relative overflow-hidden"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-zinc-800">
-                <div>
-                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-white uppercase tracking-wider mb-1">
-                    <ShieldCheck className="w-4 h-4 text-white" />
-                    <span>Compromisso com a Transparência</span>
-                  </div>
-                  <h3 className="font-anton text-xl sm:text-2xl text-white uppercase tracking-tight">
-                    Destinação e Aplicação dos Recursos
-                  </h3>
+              <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-96 h-40 bg-white/[0.04] blur-3xl rounded-full" />
+
+              <div className="relative z-10 max-w-2xl mx-auto space-y-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-700 text-white text-xs font-bold uppercase tracking-wider">
+                  <ShieldCheck className="w-4 h-4 text-white" />
+                  <span>Prestação de Contas 100% Aberta</span>
                 </div>
-                <div className="text-xs text-zinc-500">
-                  Última atualização: {DONATION_CONFIG.accountability.lastUpdated}
-                </div>
-              </div>
 
-              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                {DONATION_CONFIG.accountability.statusNote}
-              </p>
+                <h3 className="font-anton text-3xl sm:text-4xl md:text-5xl text-white uppercase tracking-tight leading-tight">
+                  Comprovantes & Notas Fiscais
+                </h3>
 
-              {/* Tabela de Despesas em Preto e Branco */}
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs sm:text-sm">
-                  <thead>
-                    <tr className="border-b border-zinc-800 text-zinc-400 font-bold uppercase text-[11px] tracking-wider">
-                      <th className="py-3 px-2">Categoria</th>
-                      <th className="py-3 px-2 hidden sm:table-cell">Descrição</th>
-                      <th className="py-3 px-2 text-right">Valor Est.</th>
-                      <th className="py-3 px-2 text-right">Proporção</th>
-                      <th className="py-3 px-2 text-center">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-zinc-900">
-                    {DONATION_CONFIG.accountability.allocatedExpenses.map((exp, index) => (
-                      <tr key={index} className="hover:bg-zinc-900/40 transition-colors">
-                        <td className="py-3.5 px-2 font-bold text-white">
-                          {exp.category}
-                          <span className="block sm:hidden text-[11px] text-zinc-400 font-normal mt-0.5">
-                            {exp.description}
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-2 text-zinc-400 hidden sm:table-cell">
-                          {exp.description}
-                        </td>
-                        <td className="py-3.5 px-2 text-right font-mono font-bold text-white">
-                          R$ {exp.estimatedOrSpentAmount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                        </td>
-                        <td className="py-3.5 px-2 text-right font-mono text-zinc-400">
-                          {exp.percentage}%
-                        </td>
-                        <td className="py-3.5 px-2 text-center">
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-zinc-900 text-white border border-zinc-700">
-                            <CheckCircle2 className="w-3 h-3 text-white" />
-                            {exp.status}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                  <tfoot>
-                    <tr className="border-t border-zinc-800 font-bold text-white">
-                      <td className="py-3 px-2 uppercase">Total Arrecadado Pix</td>
-                      <td className="py-3 px-2 hidden sm:table-cell text-zinc-400">Total contabilizado em conta</td>
-                      <td className="py-3 px-2 text-right font-mono text-white text-sm sm:text-base">
-                        R$ {DONATION_CONFIG.pixGoal.current.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                      </td>
-                      <td className="py-3 px-2 text-right font-mono text-zinc-400">100%</td>
-                      <td className="py-3 px-2 text-center text-xs text-white">Auditado</td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-
-              {/* Nota sobre comprovantes */}
-              <div className="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 flex items-start gap-3 text-xs text-zinc-400">
-                <AlertCircle className="w-4 h-4 text-zinc-300 shrink-0 mt-0.5" />
-                <p>
-                  As notas fiscais e comprovantes de compra de brinquedos e insumos são arquivados pela coordenação financeira da ação social e ficam à disposição dos doadores e parceiros mediante solicitação.
+                <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                  Para garantir total transparência com cada doador, patrocinador e voluntário, todos os comprovantes, notas fiscais, extratos e recibos do Projeto JJJ estão disponibilizados publicamente para consulta na nossa pasta oficial do Google Drive.
                 </p>
+
+                {/* Botão de Destaque para Acesso ao Google Drive */}
+                <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a
+                    href={DONATION_CONFIG.accountability.driveFolderUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-white hover:bg-zinc-200 text-black font-anton text-base uppercase tracking-wider transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                  >
+                    <FolderOpen className="w-5 h-5 text-black" />
+                    <span>Acessar Prestação de Contas no Drive</span>
+                    <ExternalLink className="w-4 h-4 text-black" />
+                  </a>
+                </div>
+
+                {/* Badges de garantia */}
+                <div className="pt-6 border-t border-zinc-900 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-zinc-400">
+                  <span className="inline-flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+                    Notas Fiscais de Compras
+                  </span>
+                  <span className="hidden sm:inline text-zinc-700">•</span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+                    Comprovantes & Extratos Pix
+                  </span>
+                  <span className="hidden sm:inline text-zinc-700">•</span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+                    Recibos de Doações e Insumos
+                  </span>
+                </div>
               </div>
             </motion.div>
           </motion.div>

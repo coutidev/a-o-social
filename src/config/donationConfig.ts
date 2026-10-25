@@ -71,7 +71,8 @@ export interface DonationConfig {
   accountability: {
     statusNote: string;
     lastUpdated: string;
-    allocatedExpenses: {
+    driveFolderUrl: string;
+    allocatedExpenses?: {
       category: string;
       description: string;
       estimatedOrSpentAmount: number;
@@ -307,8 +308,9 @@ export const DONATION_CONFIG: DonationConfig = {
 
   // Prestação de Contas e Transparência
   accountability: {
-    statusNote: "Prestação de contas contínua. 100% dos recursos arrecadados via Pix e doações físicas são direcionados exclusivamente para a realização do evento do Dia das Crianças.",
+    statusNote: "Prestação de contas 100% aberta e auditável. Todos os comprovantes, extratos e notas fiscais estão disponíveis publicamente na pasta oficial do Google Drive.",
     lastUpdated: "Outubro de 2026",
+    driveFolderUrl: "https://drive.google.com/drive/folders/1KdHs0ah7rlkYaZPhfylAdqmAQCdY-iA2",
     allocatedExpenses: [
       {
         category: "Brinquedos & Lembrancinhas",
