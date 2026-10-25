@@ -184,7 +184,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </h2>
 
               <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                A união entre <strong>JUPES</strong>, <strong>Juventude F.C.</strong> e <strong>JUREF</strong> transformou o Dia das Crianças no Sítio Cercado em um marco de amor, brinquedos novos, cachorro-quente, gincanas e memórias inesquecíveis.
+                A união entre <strong>JUPES</strong>, <strong>Juventude F.C.</strong> e <strong>JUREF</strong> transformou o Dia das Crianças no Sítio Cercado em um marco de amor, brinquedos novos, frutas, doces, algodão-doce, pipas, gincanas e memórias inesquecíveis.
               </p>
             </div>
 
@@ -294,7 +294,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   Recreação e Alegria
                 </h3>
                 <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
-                  Cama elástica, pintura facial, gincanas saudáveis, pipoca, algodão doce e cachorro-quente liberados para todas as famílias na praça.
+                  Cama elástica, pintura facial, gincanas saudáveis, frutas frescas, doces, algodão-doce, pipas e pipoca para todas as famílias na praça.
                 </p>
               </div>
             </div>

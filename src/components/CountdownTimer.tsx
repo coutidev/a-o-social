@@ -80,7 +80,7 @@ export const CountdownTimer: React.FC<{ className?: string }> = ({ className = '
       </h3>
 
       <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-xl mx-auto">
-        Brinquedos, gincanas, alimentação e alegria para as famílias do Sítio Cercado no Parque do Semeador.
+        Brinquedos, gincanas, frutas, doces, algodão-doce, pipas e alegria para as famílias do Sítio Cercado no Parque do Semeador.
       </p>
 
       {/* Counter Digits Grid */}

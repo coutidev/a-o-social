@@ -10,7 +10,7 @@ import {
   Send,
   Search
 } from 'lucide-react';
-import { DONATION_CONFIG } from '../config/donationConfig';
+import { DONATION_CONFIG, buildPartnerWhatsappLink } from '../config/donationConfig';
 
 interface SponsorsPageProps {
   onNavigateToJoin?: () => void;
@@ -21,6 +21,7 @@ export const SponsorsPage: React.FC<SponsorsPageProps> = ({ onNavigateToJoin }) 
   const [searchFilter, setSearchFilter] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('Todas');
   const [partnerFormSubmitted, setPartnerFormSubmitted] = useState(false);
+  const [partnerWhatsappUrl, setPartnerWhatsappUrl] = useState<string>('');
   const [partnerData, setPartnerData] = useState({
     companyName: '',
     responsibleName: '',
@@ -42,18 +43,30 @@ export const SponsorsPage: React.FC<SponsorsPageProps> = ({ onNavigateToJoin }) 
 
   const handlePartnerSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setPartnerFormSubmitted(true);
-    setTimeout(() => {
-      setPartnerFormSubmitted(false);
-      setPartnerModalOpen(false);
-      setPartnerData({
-        companyName: '',
-        responsibleName: '',
-        whatsapp: '',
-        segment: '',
-        message: ''
+
+    // Salva localmente para segurança
+    try {
+      const existing = JSON.parse(localStorage.getItem('jjj_patrocinadores_interessados') || '[]');
+      existing.push({
+        ...partnerData,
+        date: new Date().toISOString()
       });
-    }, 2500);
+      localStorage.setItem('jjj_patrocinadores_interessados', JSON.stringify(existing));
+    } catch (err) {
+      console.warn('Storage error:', err);
+    }
+
+    // Gera o link oficial para o WhatsApp da coordenação
+    const whatsappLink = buildPartnerWhatsappLink(partnerData);
+    setPartnerWhatsappUrl(whatsappLink);
+    setPartnerFormSubmitted(true);
+
+    // Tenta abrir o WhatsApp imediatamente
+    try {
+      window.open(whatsappLink, '_blank', 'noopener,noreferrer');
+    } catch (err) {
+      console.warn('Popup blocked:', err);
+    }
   };
 
   return (
@@ -331,12 +344,43 @@ export const SponsorsPage: React.FC<SponsorsPageProps> = ({ onNavigateToJoin }) 
               </div>
 
               {partnerFormSubmitted ? (
-                <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-700 text-center space-y-3">
-                  <CheckCircle2 className="w-10 h-10 text-white mx-auto" />
-                  <h4 className="font-anton text-lg text-white uppercase">Interesse Registrado!</h4>
-                  <p className="text-xs text-zinc-300">
-                    A coordenação do Projeto JJJ entrará em contato pelo WhatsApp informado em breve. Obrigado pelo apoio à nossa comunidade!
+                <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-700 text-center space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-zinc-800 text-white border border-zinc-700 flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-8 h-8 stroke-[2.5]" />
+                  </div>
+                  <h4 className="font-anton text-xl text-white uppercase tracking-tight">Proposta Organizada!</h4>
+                  <p className="text-xs text-zinc-300 leading-relaxed max-w-sm mx-auto">
+                    Os dados da sua empresa foram preparados para envio direto à coordenação do Projeto JJJ. Caso o WhatsApp não tenha aberto automaticamente, clique no botão abaixo:
                   </p>
+
+                  <a
+                    href={partnerWhatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-black font-anton text-sm uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-black"
+                  >
+                    <Send className="w-4 h-4 text-black" />
+                    <span>Confirmar no WhatsApp da Coordenação</span>
+                    <ExternalLink className="w-4 h-4 text-black" />
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPartnerFormSubmitted(false);
+                      setPartnerModalOpen(false);
+                      setPartnerData({
+                        companyName: '',
+                        responsibleName: '',
+                        whatsapp: '',
+                        segment: '',
+                        message: ''
+                      });
+                    }}
+                    className="text-xs text-zinc-400 hover:text-white underline cursor-pointer pt-2 block mx-auto"
+                  >
+                    Fechar janela
+                  </button>
                 </div>
               ) : (
                 <form onSubmit={handlePartnerSubmit} className="space-y-4">

@@ -203,7 +203,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({
                   </p>
 
                   <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Graças à arrecadação de <strong>R$ 2.225 via Pix</strong> e o suporte decisivo dos 15 patrocinadores oficiais, foram distribuídos centenas de brinquedos novos, cachorro-quente liberado com refrigerante e suco, além de estações de cama elástica, gincanas de futebol, pintura facial e música.
+                    Graças à arrecadação de <strong>R$ 2.225 via Pix</strong> e o suporte decisivo dos 15 patrocinadores oficiais, foram distribuídos centenas de brinquedos novos, frutas frescas, doces variados, algodão-doce, pipas, além de estações de cama elástica, gincanas de futebol, pintura facial e música.
                   </p>
                 </motion.div>
               </div>
@@ -227,7 +227,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({
                     </h3>
 
                     <p className="text-sm text-zinc-400 leading-relaxed">
-                      Nenhum brinquedo seria entregue e nenhum cachorro-quente seria montado sem os mais de <strong>60 voluntários</strong> que doaram seu sábado, acordaram cedo e colocaram o coração na preparação.
+                      Nenhum brinquedo ou pipa seria entregue, e nenhuma fruta ou algodão-doce seria distribuído sem os mais de <strong>60 voluntários</strong> que doaram seu sábado, acordaram cedo e colocaram o coração na preparação.
                     </p>
 
                     <blockquote className="p-4 rounded-2xl bg-zinc-900 border-l-2 border-white text-xs text-zinc-300 italic leading-relaxed">

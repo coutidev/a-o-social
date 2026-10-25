@@ -4,7 +4,8 @@ import {
   ArrowUp, 
   MapPin, 
   Instagram, 
-  ShieldCheck
+  ShieldCheck,
+  MessageCircle
 } from 'lucide-react';
 import { DONATION_CONFIG } from '../config/donationConfig';
 import { PageType } from './Header';
@@ -165,6 +166,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <div className="text-[11px] text-zinc-500 mt-0.5">
                 Titular: {DONATION_CONFIG.receiverName}
               </div>
+            </div>
+
+            <div className="pt-2">
+              <h5 className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-1">
+                WhatsApp da Coordenação
+              </h5>
+              <a
+                href={`https://wa.me/${DONATION_CONFIG.coordinatorWhatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-mono text-zinc-200 hover:text-white transition-colors flex items-center justify-center md:justify-start gap-1.5 group"
+              >
+                <MessageCircle className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white transition-colors" />
+                <span>{DONATION_CONFIG.coordinatorWhatsappDisplay}</span>
+              </a>
             </div>
           </div>
 

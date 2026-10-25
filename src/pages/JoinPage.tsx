@@ -13,10 +13,12 @@ import {
   Utensils, 
   Camera, 
   HelpCircle,
-  BellRing
+  BellRing,
+  ExternalLink
 } from 'lucide-react';
 import { DonationSection } from '../components/DonationSection';
 import { CountdownTimer } from '../components/CountdownTimer';
+import { DONATION_CONFIG, buildVolunteerWhatsappLink } from '../config/donationConfig';
 
 export const JoinPage: React.FC = () => {
   // Volunteer Form State
@@ -31,14 +33,15 @@ export const JoinPage: React.FC = () => {
 
   const [volunteerSubmitted, setVolunteerSubmitted] = useState(false);
   const [volunteerSubmitting, setVolunteerSubmitting] = useState(false);
+  const [volunteerWhatsappUrl, setVolunteerWhatsappUrl] = useState<string>('');
 
   // Future actions alert signup
   const [notifyEmail, setNotifyEmail] = useState('');
   const [notifySuccess, setNotifySuccess] = useState(false);
 
   const areasOfHelp = [
-    { id: 'recreacao', label: 'Recreação & Brincadeiras', icon: Smile, desc: 'Ajudar nas gincanas, filas de brinquedos e monitoria.' },
-    { id: 'alimentacao', label: 'Alimentação & Lanches', icon: Utensils, desc: 'Montagem de cachorro-quente, pipoca e distribuição de sucos.' },
+    { id: 'recreacao', label: 'Recreação & Brincadeiras', icon: Smile, desc: 'Ajudar nas gincanas, oficinas de pipa e monitoria.' },
+    { id: 'alimentacao', label: 'Alimentação, Frutas & Doces', icon: Utensils, desc: 'Distribuição de frutas frescas, doces, algodão-doce, pipoca e sucos.' },
     { id: 'brinquedos', label: 'Entrega de Brinquedos', icon: Gift, desc: 'Organização por faixa etária e entrega carinhosa dos presentes.' },
     { id: 'foto', label: 'Fotografia & Vídeo', icon: Camera, desc: 'Registrar os sorrisos e a cobertura visual da ação.' },
     { id: 'apoio', label: 'Logística & Apoio Geral', icon: HelpCircle, desc: 'Montagem de tendas, limpeza da praça e recepção das famílias.' },
@@ -59,10 +62,20 @@ export const JoinPage: React.FC = () => {
       console.warn('Local storage error:', err);
     }
 
+    const whatsappLink = buildVolunteerWhatsappLink(volunteerForm);
+    setVolunteerWhatsappUrl(whatsappLink);
+
     setTimeout(() => {
       setVolunteerSubmitting(false);
       setVolunteerSubmitted(true);
-    }, 700);
+
+      // Tenta abrir o WhatsApp automaticamente
+      try {
+        window.open(whatsappLink, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        console.warn('Popup blocked:', err);
+      }
+    }, 400);
   };
 
   const handleNotifySubmit = (e: React.FormEvent) => {
@@ -169,31 +182,46 @@ export const JoinPage: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-8 rounded-2xl bg-zinc-900 border border-zinc-700 text-center space-y-4"
+                className="p-8 rounded-2xl bg-zinc-900 border border-zinc-700 text-center space-y-4 max-w-lg mx-auto"
               >
                 <div className="w-16 h-16 rounded-full bg-zinc-800 text-white border border-zinc-700 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-8 h-8 stroke-[2.5]" />
                 </div>
-                <h3 className="font-anton text-2xl text-white uppercase">Inscrição de Voluntário Recebida!</h3>
-                <p className="text-sm text-zinc-300 max-w-md mx-auto leading-relaxed">
-                  Obrigado, <strong>{volunteerForm.name}</strong>! Recebemos seu interesse em apoiar na área de <strong>{volunteerForm.area}</strong>. Nossa equipe entrará em contato via WhatsApp no número <strong>{volunteerForm.whatsapp}</strong> antes dos próximos alinhamentos.
+                <h3 className="font-anton text-2xl text-white uppercase tracking-tight">Inscrição Pronta para Envio!</h3>
+                <p className="text-sm text-zinc-300 leading-relaxed">
+                  Obrigado, <strong>{volunteerForm.name}</strong>! Preparamos sua ficha de voluntário para a área de <strong>{volunteerForm.area}</strong>. Caso o WhatsApp não tenha aberto automaticamente, clique no botão abaixo para nos enviar sua mensagem:
                 </p>
-                <button
-                  onClick={() => {
-                    setVolunteerSubmitted(false);
-                    setVolunteerForm({
-                      name: '',
-                      whatsapp: '',
-                      email: '',
-                      area: 'Recreação & Brincadeiras',
-                      availability: 'Final de semana',
-                      message: ''
-                    });
-                  }}
-                  className="px-6 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs uppercase tracking-wider transition-all cursor-pointer"
+
+                <a
+                  href={volunteerWhatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-white hover:bg-zinc-200 text-black font-anton text-sm uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-black"
                 >
-                  Cadastrar outro voluntário
-                </button>
+                  <Send className="w-4 h-4 text-black" />
+                  <span>Enviar Inscrição no WhatsApp da Coordenação</span>
+                  <ExternalLink className="w-4 h-4 text-black" />
+                </a>
+
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setVolunteerSubmitted(false);
+                      setVolunteerForm({
+                        name: '',
+                        whatsapp: '',
+                        email: '',
+                        area: 'Recreação & Brincadeiras',
+                        availability: 'Final de semana',
+                        message: ''
+                      });
+                    }}
+                    className="px-6 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs uppercase tracking-wider transition-all cursor-pointer"
+                  >
+                    Cadastrar outro voluntário
+                  </button>
+                </div>
               </motion.div>
             ) : (
               <form onSubmit={handleVolunteerSubmit} className="space-y-6">
@@ -367,7 +395,7 @@ export const JoinPage: React.FC = () => {
                 Grande Ação — Parque do Semeador
               </h4>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                Grande dia de alegria com distribuição de brinquedos, gincanas, cachorro-quente, pipoca e muito amor para todas as famílias do bairro.
+                Grande dia de alegria com distribuição de brinquedos, gincanas, frutas, doces, algodão-doce, pipas e muito amor para todas as famílias do bairro.
               </p>
               <div className="text-[11px] text-zinc-300 flex items-start gap-1.5 pt-1">
                 <MapPin className="w-3.5 h-3.5 text-white shrink-0 mt-0.5" />

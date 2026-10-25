@@ -49,7 +49,7 @@ export const ToyProgressBar: React.FC<PixProgressBarProps> = ({
               </span>
             </div>
             <p className="text-xs text-zinc-400">
-              Unidos pela nossa criançada • 18/10
+              Unidos pela nossa criançada • 20/12
             </p>
           </div>
         </div>

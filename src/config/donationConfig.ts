@@ -36,6 +36,10 @@ export interface DonationConfig {
   receiverName: string;
   receiverCity: string;
 
+  // WhatsApp da Coordenação para recebimento de Patrocínio e Voluntariado
+  coordinatorWhatsapp: string;
+  coordinatorWhatsappDisplay: string;
+
   // Meta Pix
   pixGoal: {
     current: number;
@@ -135,6 +139,11 @@ export const DONATION_CONFIG: DonationConfig = {
 
   receiverName: "GABRIELLA VITORIA GERVIKAS",
   receiverCity: "Curitiba - PR",
+
+  // WhatsApp oficial da Coordenação para receber contatos e formulários
+  // Pode ser configurado aqui ou pela variável de ambiente VITE_COORDINATOR_WHATSAPP
+  coordinatorWhatsapp: "5541987759034",
+  coordinatorWhatsappDisplay: "(41) 98775-9034",
 
   // Meta Pix com valor arrecadado
   pixGoal: {
@@ -309,8 +318,8 @@ export const DONATION_CONFIG: DonationConfig = {
         status: "Planejado",
       },
       {
-        category: "Alimentação & Lanches",
-        description: "Pães de cachorro-quente, salsichas, molhos, pipoca, algodão doce, sucos e refrigerantes para todas as famílias.",
+        category: "Alimentação, Doces & Pipas",
+        description: "Frutas frescas, doces variados, algodão-doce, pipas, pipoca, sucos e refrigerantes para todas as famílias.",
         estimatedOrSpentAmount: 700,
         percentage: 31,
         status: "Planejado",
@@ -378,3 +387,58 @@ export const DONATION_CONFIG: DonationConfig = {
     },
   ],
 };
+
+/**
+ * Utilitários para envio direto de mensagens para o WhatsApp da Coordenação
+ */
+export function getCoordinatorWhatsappNumber(): string {
+  const envPhone = (import.meta as any).env?.VITE_COORDINATOR_WHATSAPP;
+  return (envPhone || DONATION_CONFIG.coordinatorWhatsapp).replace(/\D/g, '');
+}
+
+export function buildVolunteerWhatsappLink(data: {
+  name: string;
+  whatsapp: string;
+  email?: string;
+  area: string;
+  availability: string;
+  message?: string;
+}): string {
+  const phone = getCoordinatorWhatsappNumber();
+  const text = 
+`*NOVA INSCRIÇÃO DE VOLUNTÁRIO - PROJETO JJJ* 🤍
+━━━━━━━━━━━━━━━━━━━━
+👤 *Nome:* ${data.name}
+📱 *WhatsApp:* ${data.whatsapp}
+✉️ *E-mail:* ${data.email || 'Não informado'}
+🎯 *Área de Apoio:* ${data.area}
+⏰ *Disponibilidade:* ${data.availability}
+💬 *Mensagem:* ${data.message || 'Sem mensagem adicional'}
+━━━━━━━━━━━━━━━━━━━━
+_Enviado pelo site oficial do Projeto JJJ_`;
+
+  return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+}
+
+export function buildPartnerWhatsappLink(data: {
+  companyName: string;
+  responsibleName: string;
+  whatsapp: string;
+  segment?: string;
+  message?: string;
+}): string {
+  const phone = getCoordinatorWhatsappNumber();
+  const text = 
+`*NOVO INTERESSE DE PATROCÍNIO - PROJETO JJJ* 🤝
+━━━━━━━━━━━━━━━━━━━━
+🏢 *Empresa / Marca:* ${data.companyName}
+👤 *Responsável:* ${data.responsibleName}
+📱 *WhatsApp:* ${data.whatsapp}
+🏷️ *Ramo / Proposta:* ${data.segment || 'Não informado'}
+💬 *Mensagem:* ${data.message || 'Gostaria de apoiar o Projeto JJJ'}
+━━━━━━━━━━━━━━━━━━━━
+_Enviado pelo site oficial do Projeto JJJ_`;
+
+  return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+}
+
