@@ -247,8 +247,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="space-y-4">
               <div className="relative h-44 rounded-2xl overflow-hidden border border-zinc-800">
                 <img
-                  src="/card-brinquedos.jpeg"
-                  alt="Brinquedos e presentes"
+                  src="/gallery/foto-1-brinquedos.jpg"
+                  alt="Doces, pipas e presentes"
                   className="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3 p-2 rounded-xl bg-black/85 backdrop-blur-md border border-zinc-700 text-white">
@@ -281,8 +281,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="space-y-4">
               <div className="relative h-44 rounded-2xl overflow-hidden border border-zinc-800">
                 <img
-                  src="/card-brincadeiras.jpeg"
-                  alt="Brincadeiras e gincanas"
+                  src="/gallery/foto-2-brincadeiras.jpg"
+                  alt="Brincadeiras e cama elástica"
                   className="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3 p-2 rounded-xl bg-black/85 backdrop-blur-md border border-zinc-700 text-white">
@@ -315,7 +315,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="space-y-4">
               <div className="relative h-44 rounded-2xl overflow-hidden border border-zinc-800">
                 <img
-                  src="/card-comunidade.jpeg"
+                  src="/gallery/foto-4-voluntarios.jpg"
                   alt="Comunidade e voluntários"
                   className="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500"
                 />
