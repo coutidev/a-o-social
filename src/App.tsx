@@ -3,65 +3,115 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useRef } from 'react';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { AboutSection } from './components/AboutSection';
-import { DonationSection } from './components/DonationSection';
-import { InstagramSection } from './components/InstagramSection';
-import { MessagesSection } from './components/MessagesSection';
+import React, { useState, useEffect } from 'react';
+import { Header, PageType } from './components/Header';
+import { HomePage } from './pages/HomePage';
+import { ProjectPage } from './pages/ProjectPage';
+import { SponsorsPage } from './pages/SponsorsPage';
+import { JoinPage } from './pages/JoinPage';
+import { MuralPage } from './pages/MuralPage';
 import { Footer } from './components/Footer';
 import { MobileQuickBar } from './components/MobileQuickBar';
+import { ToastProvider } from './context/ToastContext';
 
 export default function App() {
-  const scrollToDonation = () => {
-    const el = document.getElementById('doacao');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const [currentPage, setCurrentPage] = useState<PageType>('inicio');
+  const [projectSubSection, setProjectSubSection] = useState<'historia' | 'galeria' | 'transparencia'>('historia');
+
+  // Synchronize initial state and back/forward browser navigation via URL hash
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (hash === 'projeto' || hash === 'historia' || hash === 'galeria' || hash === 'transparencia') {
+        setCurrentPage('projeto');
+        if (hash === 'galeria' || hash === 'transparencia' || hash === 'historia') {
+          setProjectSubSection(hash as any);
+        }
+      } else if (hash === 'patrocinadores') {
+        setCurrentPage('patrocinadores');
+      } else if (hash === 'fazer-parte' || hash === 'doacao' || hash === 'voluntario') {
+        setCurrentPage('fazer-parte');
+      } else if (hash === 'mural') {
+        setCurrentPage('mural');
+      } else {
+        setCurrentPage('inicio');
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const navigateToPage = (page: PageType, subSection?: string) => {
+    setCurrentPage(page);
+    if (page === 'projeto' && subSection && (subSection === 'historia' || subSection === 'galeria' || subSection === 'transparencia')) {
+      setProjectSubSection(subSection as any);
+      window.location.hash = subSection;
+    } else {
+      window.location.hash = page;
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const scrollToAbout = () => {
-    const el = document.getElementById('sobre');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  const handleMobileDonateClick = () => {
+    navigateToPage('fazer-parte');
+    setTimeout(() => {
+      const el = document.getElementById('doacao-pix');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 150);
   };
 
   return (
-    <div className="min-h-screen bg-black text-zinc-100 flex flex-col selection:bg-white selection:text-black">
-      {/* Subtle top edge bar */}
-      <div className="h-1 w-full bg-gradient-to-r from-zinc-800 via-white to-zinc-800" />
+    <ToastProvider>
+      <div className="min-h-screen bg-[#050505] text-zinc-100 flex flex-col selection:bg-white selection:text-black">
+        
+        {/* Top Edge Bar em Preto e Branco */}
+        <div className="h-1 w-full bg-gradient-to-r from-zinc-900 via-white to-zinc-900" />
 
-      {/* Header */}
-      <Header onDonateClick={scrollToDonation} />
-
-      {/* Main Content Sections */}
-      <main className="flex-1">
-        {/* Hero Section */}
-        <Hero 
-          onDonateClick={scrollToDonation} 
-          onLearnMoreClick={scrollToAbout} 
+        {/* Global Header com 5 Páginas e Botão em Preto e Branco */}
+        <Header 
+          currentPage={currentPage}
+          onNavigate={navigateToPage}
         />
 
-        {/* About & Purpose Section */}
-        <AboutSection />
+        {/* Main Content Area based on Selected Page */}
+        <main className="flex-1">
+          {currentPage === 'inicio' && (
+            <HomePage onNavigate={navigateToPage} />
+          )}
 
-        {/* Primary Donation Centerpiece (QR Code + PIX Copia e Cola) */}
-        <DonationSection />
+          {currentPage === 'projeto' && (
+            <ProjectPage 
+              initialSubSection={projectSubSection}
+              onNavigateToJoin={() => navigateToPage('fazer-parte')} 
+            />
+          )}
 
-        {/* Instagram Groups Section */}
-        <InstagramSection />
+          {currentPage === 'patrocinadores' && (
+            <SponsorsPage 
+              onNavigateToJoin={() => navigateToPage('fazer-parte')}
+            />
+          )}
 
-        {/* Public Messages Wall Section (Supabase Mural) */}
-        <MessagesSection />
-      </main>
+          {currentPage === 'fazer-parte' && (
+            <JoinPage />
+          )}
 
-      {/* Footer */}
-      <Footer />
+          {currentPage === 'mural' && (
+            <MuralPage />
+          )}
+        </main>
 
-      {/* Mobile Sticky Quick Bar (Visible upon scrolling on phones) */}
-      <MobileQuickBar onDonateClick={scrollToDonation} />
-    </div>
+        {/* 100% Black & White Footer */}
+        <Footer onNavigate={navigateToPage} />
+
+        {/* Mobile Sticky Quick Bar (Preto e Branco) */}
+        <MobileQuickBar onDonateClick={handleMobileDonateClick} />
+
+      </div>
+    </ToastProvider>
   );
 }

@@ -3,7 +3,11 @@ import { Gift, Smile, Users, HeartHandshake, CheckCircle2, Calendar, MapPin, Ext
 import { DONATION_CONFIG } from '../config/donationConfig';
 import { motion } from 'motion/react';
 
-export const AboutSection: React.FC = () => {
+interface AboutSectionProps {
+  isHighlighted?: boolean;
+}
+
+export const AboutSection: React.FC<AboutSectionProps> = ({ isHighlighted = false }) => {
   const cards = [
     {
       icon: Gift,
@@ -35,7 +39,12 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="sobre" className="py-16 sm:py-24 border-t border-zinc-900 relative">
+    <section 
+      id="sobre" 
+      className={`py-16 sm:py-24 border-t border-zinc-900 relative transition-all duration-700 ${
+        isHighlighted ? 'section-progressive-arrival' : ''
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* ========================================================================= */}

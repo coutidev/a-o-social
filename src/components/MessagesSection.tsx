@@ -325,7 +325,7 @@ export const MessagesSection: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: Math.min(index * 0.06, 0.4) }}
-                  className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-zinc-950 border border-zinc-800/90 hover:border-zinc-600 transition-all duration-300 hover:bg-zinc-900/60 shadow-lg"
+                  className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-zinc-950 border border-zinc-800/90 hover:border-zinc-600 pix-subtle-glow transition-all duration-300 hover:bg-zinc-900/60 shadow-lg"
                 >
                   {/* Sheen sutil ao passar o mouse */}
                   <div className="pointer-events-none absolute inset-x-6 -top-px h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

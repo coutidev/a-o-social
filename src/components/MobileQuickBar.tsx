@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, QrCode, Copy, Check } from 'lucide-react';
+import { Copy, Check, QrCode } from 'lucide-react';
 import { DONATION_CONFIG } from '../config/donationConfig';
 import { motion, AnimatePresence } from 'motion/react';
+import { useToast } from '../context/ToastContext';
 
 interface MobileQuickBarProps {
   onDonateClick: () => void;
 }
 
 export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ onDonateClick }) => {
+  const { showToast } = useToast();
   const [visible, setVisible] = useState(false);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show when scrolled down past hero
       if (window.scrollY > 300) {
         setVisible(true);
       } else {
@@ -33,6 +34,14 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ onDonateClick })
       }
       setCopied(true);
       if (navigator.vibrate) navigator.vibrate(40);
+
+      showToast({
+        title: 'Chave Pix Copiada!',
+        message: 'Cole no aplicativo do seu banco para doar qualquer quantia.',
+        pixKey: DONATION_CONFIG.pixEmail,
+        type: 'success',
+      });
+
       setTimeout(() => setCopied(false), 3000);
     } catch (err) {
       console.error(err);
@@ -50,15 +59,15 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ onDonateClick })
           transition={{ duration: 0.3 }}
           className="fixed bottom-4 inset-x-4 z-40 sm:hidden"
         >
-          <div className="flex items-center gap-2 p-2 rounded-2xl bg-zinc-950/95 backdrop-blur-xl border border-zinc-700/80 shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+          <div className="flex items-center gap-2 p-2 rounded-2xl bg-zinc-950/95 backdrop-blur-xl border border-zinc-750 shadow-[0_10px_30px_rgba(0,0,0,0.95)]">
             
             {/* Quick Pix Copy Button */}
             <button
               onClick={handleQuickCopy}
               className={`flex-1 flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-bold text-xs tracking-wider uppercase transition-all cursor-pointer ${
                 copied
-                  ? 'bg-emerald-500 text-black'
-                  : 'bg-zinc-800 text-white hover:bg-zinc-700'
+                  ? 'bg-zinc-200 text-black'
+                  : 'bg-zinc-900 border border-zinc-750 text-white hover:bg-zinc-800'
               }`}
             >
               {copied ? (
@@ -77,9 +86,9 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ onDonateClick })
             {/* Jump to QR Code Button */}
             <button
               onClick={onDonateClick}
-              className="flex-1 flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-white text-black font-extrabold text-xs tracking-wider uppercase shadow-md active:scale-95 cursor-pointer"
+              className="flex-1 flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-white text-black font-extrabold text-xs tracking-wider uppercase shadow-md active:scale-95 cursor-pointer hover:bg-zinc-200"
             >
-              <QrCode className="w-4 h-4" />
+              <QrCode className="w-4 h-4 text-black" />
               <span>Ver QR Code</span>
             </button>
 

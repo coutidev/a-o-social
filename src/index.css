@@ -5,12 +5,23 @@
     color-scheme: dark;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    background-color: #050505;
+  }
+
   body {
     font-family: 'Barlow Condensed', sans-serif;
     background-color: #050505;
     color: #f4f4f5;
     overflow-x: hidden;
     letter-spacing: 0.015em;
+  }
+
+  /* Imagens 100% em preto e branco de alto contraste */
+  img {
+    filter: grayscale(100%) contrast(115%);
   }
 
   h1, h2, h3, h4, .font-heading, .titulo {
@@ -26,6 +37,11 @@
   button {
     font-family: 'Barlow Condensed', sans-serif;
     letter-spacing: 0.04em;
+  }
+
+  ::selection {
+    background-color: #ffffff;
+    color: #000000;
   }
 }
 
@@ -65,14 +81,26 @@
     0 0 20px rgba(255, 255, 255, 0.35);
 }
 
-/* Custom glow utility for high-impact donation area */
+/* Custom monochrome glow utilities */
 .pix-glow-frame {
   box-shadow: 0 0 50px -10px rgba(255, 255, 255, 0.12),
-              0 0 20px -5px rgba(255, 255, 255, 0.08);
+              0 0 25px -5px rgba(255, 255, 255, 0.08);
 }
 
 .pix-subtle-glow {
-  box-shadow: 0 0 35px -5px rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 30px -5px rgba(255, 255, 255, 0.09), 0 0 15px -3px rgba(255, 255, 255, 0.05);
+}
+
+.pix-subtle-glow:hover {
+  box-shadow: 0 0 45px -3px rgba(255, 255, 255, 0.16), 0 0 20px -2px rgba(255, 255, 255, 0.08);
+}
+
+.white-glow-sm {
+  box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.25);
+}
+
+.white-glow-md {
+  box-shadow: 0 0 40px -5px rgba(255, 255, 255, 0.35);
 }
 
 /* Custom scrollbar */
@@ -88,4 +116,36 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #3f3f46;
+}
+
+/* Progressive Fade-in & Smooth Arrival Effects */
+@keyframes progressiveSectionFade {
+  0% {
+    opacity: 0.35;
+    transform: translateY(18px) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sectionArrivalAura {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+  30% {
+    box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.18);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.section-progressive-arrival {
+  animation: progressiveSectionFade 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.section-glow-pulse {
+  animation: sectionArrivalAura 1.6s ease-out;
 }

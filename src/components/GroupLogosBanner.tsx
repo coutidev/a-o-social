@@ -42,7 +42,7 @@ export const GroupLogosBanner: React.FC<GroupLogosBannerProps> = ({
           src={imageSrc}
           alt="Logos JUREF, JUPES e JUVENTUDE F.C."
           onError={handleImageError}
-          className="max-w-full max-h-full object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)] transition-transform duration-500 hover:scale-[1.02]"
+          className="max-w-full max-h-full object-contain filter grayscale contrast-125 brightness-110 drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)] transition-transform duration-500 hover:scale-[1.02]"
           loading="eager"
         />
       </div>

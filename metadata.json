@@ -1,6 +1,6 @@
 {
-  "name": "Ação Social 2026 | JUPES • JUVENTUDE • JUREF",
-  "description": "Juntos pela nossa criançada. Ação social para arrecadação de brinquedos e recreação com JUPES, Juventude F.C. e JUREF.",
+  "name": "Projeto JJJ | JUPES • Juventude • Juref",
+  "description": "Uma comunidade unida por um propósito: levar alegria, esperança e solidariedade às crianças. Projeto JJJ — JUPES, Juventude F.C. e Juref.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

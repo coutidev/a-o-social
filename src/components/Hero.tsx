@@ -8,13 +8,25 @@ import { motion } from 'motion/react';
 interface HeroProps {
   onDonateClick: () => void;
   onLearnMoreClick: () => void;
+  isHighlighted?: boolean;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) => {
+export const Hero: React.FC<HeroProps> = ({ 
+  onDonateClick, 
+  onLearnMoreClick,
+  isHighlighted = false
+}) => {
+  const [bannerLoaded, setBannerLoaded] = React.useState<boolean>(true);
+
   return (
-    <section id="inicio" className="relative pt-6 pb-14 sm:pt-12 sm:pb-20 overflow-hidden">
+    <section 
+      id="inicio" 
+      className={`relative pt-6 pb-14 sm:pt-12 sm:pb-20 overflow-hidden transition-all duration-700 ${
+        isHighlighted ? 'section-progressive-arrival' : ''
+      }`}
+    >
       {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-gradient-to-b from-zinc-700/15 via-zinc-800/5 to-transparent blur-3xl rounded-full" />
+      <div className={`pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-gradient-to-b from-zinc-700/15 via-zinc-800/5 to-transparent blur-3xl rounded-full transition-opacity duration-700 ${isHighlighted ? 'opacity-100 scale-105' : 'opacity-80'}`} />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
         
@@ -36,50 +48,70 @@ export const Hero: React.FC<HeroProps> = ({ onDonateClick, onLearnMoreClick }) =
           </div>
         </motion.div>
 
-        {/* Headline & Subtle Watermark Container */}
-        <div className="relative w-full max-w-5xl flex flex-col items-center">
-          
-          {/* Subtle Watermark: The 3 official group emblems behind the words, softened for maximum legibility */}
-          <div 
-            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[620px] md:w-[740px] max-w-full aspect-[2.7/1] select-none z-0 opacity-12 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_75%)]"
-            aria-hidden="true"
+        {/* 3D Layered Banner or Dynamic Typography Container */}
+        {bannerLoaded ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="relative w-full max-w-4xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.8)] border border-zinc-800/80 bg-black/80"
           >
             <img
-              src="/logos-unidos.png"
-              alt=""
-              className="w-full h-full object-contain filter grayscale contrast-125"
+              src="/hero-banner.png"
+              alt="JUNTOS PELA NOSSA CRIANÇADA - Ação Social JUPES, Juventude F.C. e JUREF"
+              className="w-full h-auto object-contain block mx-auto"
+              onError={() => setBannerLoaded(false)}
             />
+            {/* Screen reader & SEO hierarchy */}
+            <h1 className="sr-only">JUNTOS PELA NOSSA CRIANÇADA</h1>
+            <p className="sr-only">
+              JUPES, Juventude F.C. e JUREF se unem por uma causa especial: proporcionar alegria, brincadeiras e momentos inesquecíveis para nossas crianças.
+            </p>
+          </motion.div>
+        ) : (
+          <div className="relative w-full max-w-5xl flex flex-col items-center">
+            {/* Subtle Watermark: The 3 official group emblems behind the words */}
+            <div 
+              className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[620px] md:w-[740px] max-w-full aspect-[2.7/1] select-none z-0 opacity-12 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_75%)]"
+              aria-hidden="true"
+            >
+              <img
+                src="/logos-unidos.png"
+                alt=""
+                className="w-full h-full object-contain filter grayscale contrast-125"
+              />
+            </div>
+
+            {/* Dark backdrop vignette */}
+            <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[620px] h-48 bg-black/60 blur-2xl rounded-full z-0" />
+
+            {/* High-Impact Headline in Anton */}
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="relative z-10 font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-tight leading-[0.92] max-w-5xl [text-shadow:_0_4px_30px_rgba(0,0,0,1)] uppercase"
+            >
+              JUNTOS PELA NOSSA <br className="hidden sm:inline" />
+              <span className="text-white drop-shadow-[0_0_35px_rgba(255,255,255,0.35)]">
+                CRIANÇADA.
+              </span>
+            </motion.h1>
+
+            {/* Subtitle text in Barlow Condensed */}
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative z-10 mt-6 text-lg sm:text-2xl text-zinc-300 max-w-2xl font-normal leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+            >
+              <strong className="text-white font-semibold">JUPES</strong>,{' '}
+              <strong className="text-white font-semibold">Juventude F.C.</strong> e{' '}
+              <strong className="text-white font-semibold">JUREF</strong> se unem por uma causa especial:{' '}
+              proporcionar alegria, brincadeiras e momentos inesquecíveis para nossas crianças.
+            </motion.p>
           </div>
-
-          {/* Dark backdrop vignette behind the letters to guarantee 100% clear readability */}
-          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[620px] h-48 bg-black/60 blur-2xl rounded-full z-0" />
-
-          {/* High-Impact Headline in Anton: pesada, condensada, pôster / camisa de torcida / lambe-lambe */}
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="relative z-10 font-anton text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-tight leading-[0.92] max-w-5xl [text-shadow:_0_4px_30px_rgba(0,0,0,1)] uppercase"
-          >
-            JUNTOS PELA NOSSA <br className="hidden sm:inline" />
-            <span className="text-white drop-shadow-[0_0_35px_rgba(255,255,255,0.35)]">
-              CRIANÇADA.
-            </span>
-          </motion.h1>
-
-          {/* Subtitle text in Barlow Condensed */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative z-10 mt-6 text-lg sm:text-2xl text-zinc-300 max-w-2xl font-normal leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
-          >
-            <strong className="text-white font-semibold">JUPES</strong>,{' '}
-            <strong className="text-white font-semibold">Juventude F.C.</strong> e{' '}
-            <strong className="text-white font-semibold">JUREF</strong> se unem por uma causa especial:{' '}
-            proporcionar alegria, brincadeiras e momentos inesquecíveis para nossas crianças.
-          </motion.p>
-        </div>
+        )}
 
         {/* Dynamic Countdown Timer */}
         <motion.div
