@@ -33,20 +33,37 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* 1. HERO SECTION (100% Preto e Branco) */}
       {/* ========================================================================= */}
       <section className="relative pt-6 sm:pt-10 overflow-hidden">
-        {/* Subtle Monochrome Ambient Lighting */}
-        <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-white/[0.03] blur-3xl rounded-full" />
+        {/* Ambient Lighting com as Cores da Logo (Ciano, Azul e Roxo) */}
+        <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-gradient-to-b from-cyan-500/15 via-blue-600/10 to-purple-600/5 blur-3xl rounded-full" />
         
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
           
-          {/* Badge de Edição e Próxima Ação em Preto e Branco */}
+          {/* Logo Oficial Ação Social JJJ em Destaque no Topo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center justify-center mb-5"
+          >
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/25 via-blue-600/25 to-purple-600/25 rounded-full blur-2xl opacity-75 group-hover:opacity-100 transition-opacity" />
+              <img
+                src="/logo-acao-social-jjj.png"
+                alt="Ação Social JJJ"
+                className="relative w-32 h-32 sm:w-44 sm:h-44 object-contain drop-shadow-[0_0_25px_rgba(0,210,255,0.4)]"
+              />
+            </div>
+          </motion.div>
+
+          {/* Badge de Edição e Próxima Ação */}
           <motion.div
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-full border border-zinc-700 bg-zinc-950 backdrop-blur-md mb-6 shadow-lg shadow-black"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/40 bg-zinc-950/90 backdrop-blur-md mb-6 shadow-lg shadow-black"
           >
-            <span className="flex items-center gap-1.5 text-white font-bold text-xs uppercase tracking-wider">
-              <Calendar className="w-3.5 h-3.5 text-white" />
+            <span className="flex items-center gap-1.5 text-cyan-400 font-bold text-xs uppercase tracking-wider">
+              <Calendar className="w-3.5 h-3.5 text-cyan-400" />
               <span>Próxima Ação: 20 de Dezembro</span>
             </span>
             <span className="text-zinc-600 hidden sm:inline">•</span>
@@ -55,7 +72,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </span>
           </motion.div>
 
-          {/* Banner 3D / Composição Preto e Branco */}
+          {/* Banner 3D / Composição */}
           {bannerLoaded ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.98, y: 10 }}
@@ -66,7 +83,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <img
                 src="/hero-banner.png"
                 alt="JUNTOS PELA NOSSA CRIANÇADA - Projeto JJJ"
-                className="w-full h-auto object-contain block mx-auto filter grayscale contrast-125"
+                className="w-full h-auto object-contain block mx-auto"
                 onError={() => setBannerLoaded(false)}
               />
               <h1 className="sr-only">Projeto JJJ - Juntos pela nossa criançada</h1>
@@ -81,7 +98,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <img
                   src="/logos-unidos.png"
                   alt=""
-                  className="w-full h-full object-contain filter grayscale contrast-125"
+                  className="w-full h-full object-contain"
                 />
               </div>
 
@@ -93,7 +110,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 className="relative z-10 font-anton text-5xl sm:text-7xl md:text-8xl text-white tracking-tight leading-[0.95] uppercase"
               >
                 JUNTOS PELA NOSSA <br className="hidden sm:inline" />
-                <span>CRIANÇADA.</span>
+                <span className="text-jjj-gradient">CRIANÇADA.</span>
               </motion.h1>
 
               {/* Frase Complementar Obrigatória */}
@@ -108,19 +125,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
           )}
 
-          {/* Frase de Referência em Destaque Preto e Branco */}
+          {/* Frase de Referência em Destaque */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-6 flex items-center justify-center gap-2 text-zinc-200 font-bold text-sm sm:text-base tracking-wider uppercase"
           >
-            <span className="w-8 h-px bg-zinc-600" />
-            <span>“{DONATION_CONFIG.mottoMain}”</span>
-            <span className="w-8 h-px bg-zinc-600" />
+            <span className="w-8 h-px bg-cyan-500/50" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-300 to-purple-400 font-bold">
+              “{DONATION_CONFIG.mottoMain}”
+            </span>
+            <span className="w-8 h-px bg-purple-500/50" />
           </motion.div>
 
-          {/* Botões de Ação Principal em Preto e Branco */}
+          {/* Botões de Ação Principal com Cores Vivas */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -129,16 +148,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           >
             <button
               onClick={() => onNavigate('fazer-parte')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white hover:bg-zinc-200 text-black font-anton text-base uppercase tracking-wider shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-600 to-purple-600 hover:from-cyan-300 hover:via-blue-500 hover:to-purple-500 text-white font-anton text-base uppercase tracking-wider shadow-[0_0_30px_rgba(0,210,255,0.35)] hover:shadow-[0_0_45px_rgba(189,0,255,0.55)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
             >
-              <Heart className="w-5 h-5 fill-black text-black" />
+              <Heart className="w-5 h-5 fill-white text-white" />
               <span>QUERO FAZER PARTE</span>
-              <ArrowRight className="w-4 h-4 text-black" />
+              <ArrowRight className="w-4 h-4 text-white" />
             </button>
 
             <button
               onClick={() => onNavigate('projeto')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl border border-zinc-700 bg-zinc-900 hover:bg-zinc-800 text-white font-bold text-sm uppercase tracking-wider transition-all cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl border border-cyan-500/40 hover:border-cyan-300 bg-zinc-900/80 hover:bg-zinc-800 text-white font-bold text-sm uppercase tracking-wider shadow-[0_0_15px_rgba(0,210,255,0.15)] transition-all cursor-pointer"
             >
               <span>Conhecer a História</span>
             </button>

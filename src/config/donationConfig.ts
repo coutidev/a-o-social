@@ -17,6 +17,9 @@ export interface DonationConfig {
   eventCity: string;          // "Curitiba - PR"
   eventGoogleMapsQuery: string;
 
+  // Logo Oficial Ação Social JJJ
+  mainLogoUrl: string;
+
   // Imagem dos logos dos 3 grupos
   groupsLogoUrl: string;
 
@@ -118,6 +121,9 @@ export const DONATION_CONFIG: DonationConfig = {
   eventNeighborhood: "Sítio Cercado",
   eventCity: "Curitiba - PR",
   eventGoogleMapsQuery: "https://www.google.com/maps/search/?api=1&query=Rua+Coronel+Joaquim+Antonio+de+Azevedo,+920+-+S%C3%ADtio+Cercado,+Curitiba+-+PR",
+
+  // Logo Oficial Ação Social JJJ
+  mainLogoUrl: "/logo-acao-social-jjj.png",
 
   // Imagem oficial dos três emblemas (enviada via Imgur e salva no projeto)
   groupsLogoUrl: "/logos-unidos.png",

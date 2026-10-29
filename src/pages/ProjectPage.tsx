@@ -77,14 +77,14 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({
             Conheça as raízes da aliança entre JUPES, Juventude e JUREF, veja os registros visuais da ação e acompanhe a destinação de cada recurso doado.
           </p>
 
-          {/* Subnavegação Interna em Abas (Preto e Branco) */}
+          {/* Subnavegação Interna em Abas */}
           <div className="mt-8 flex items-center justify-center">
             <div className="inline-flex p-1.5 rounded-2xl bg-zinc-950 border border-zinc-800 shadow-xl max-w-full overflow-x-auto">
               <button
                 onClick={() => setActiveTab('historia')}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-anton uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
                   activeTab === 'historia'
-                    ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.25)]'
+                    ? 'bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white shadow-[0_0_20px_rgba(0,210,255,0.4)]'
                     : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
                 }`}
               >
@@ -96,7 +96,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({
                 onClick={() => setActiveTab('galeria')}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-anton uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
                   activeTab === 'galeria'
-                    ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.25)]'
+                    ? 'bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white shadow-[0_0_20px_rgba(0,210,255,0.4)]'
                     : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
                 }`}
               >
@@ -108,7 +108,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({
                 onClick={() => setActiveTab('transparencia')}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-anton uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
                   activeTab === 'transparencia'
-                    ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.25)]'
+                    ? 'bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white shadow-[0_0_20px_rgba(0,210,255,0.4)]'
                     : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
                 }`}
               >
@@ -285,7 +285,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({
                     onClick={() => setGalleryCategory(cat)}
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer ${
                       galleryCategory === cat
-                        ? 'bg-white text-black font-bold shadow-md'
+                        ? 'bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-bold shadow-md shadow-cyan-500/20'
                         : 'bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800'
                     }`}
                   >
@@ -305,13 +305,13 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => setLightboxIndex(idx)}
-                  className="group relative rounded-3xl bg-zinc-950 border border-zinc-800 overflow-hidden cursor-pointer hover:border-zinc-500 pix-subtle-glow transition-all duration-300 shadow-xl"
+                  className="group relative rounded-3xl bg-zinc-950 border border-zinc-800 overflow-hidden cursor-pointer hover:border-cyan-500/50 pix-subtle-glow transition-all duration-300 shadow-xl"
                 >
                   <div className="relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden bg-zinc-900">
                     <img
                       src={item.imageUrl}
                       alt={item.title}
-                      className="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-all duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent opacity-85 group-hover:opacity-65 transition-opacity" />
                     
@@ -367,7 +367,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({
                       <img
                         src={currentLightboxItem.imageUrl}
                         alt={currentLightboxItem.title}
-                        className="max-h-[70vh] w-auto object-contain mx-auto filter grayscale contrast-125"
+                        className="max-h-[70vh] w-auto object-contain mx-auto"
                       />
                     </div>
 

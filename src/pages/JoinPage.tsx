@@ -339,9 +339,9 @@ export const JoinPage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={volunteerSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-2.5 py-4 rounded-2xl bg-white hover:bg-zinc-200 text-black font-anton text-base uppercase tracking-wider shadow-[0_0_30px_rgba(255,255,255,0.25)] transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
+                  className="w-full inline-flex items-center justify-center gap-2.5 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-600 to-purple-600 hover:from-cyan-300 hover:via-blue-500 hover:to-purple-500 text-white font-anton text-base uppercase tracking-wider shadow-[0_0_30px_rgba(0,210,255,0.35)] hover:shadow-[0_0_40px_rgba(189,0,255,0.55)] transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
                 >
-                  <Send className="w-5 h-5 text-black" />
+                  <Send className="w-5 h-5 text-white" />
                   <span>{volunteerSubmitting ? 'Registrando Inscrição...' : 'CONFIRMAR INSCRIÇÃO DE VOLUNTÁRIO'}</span>
                 </button>
               </form>

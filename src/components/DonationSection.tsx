@@ -208,7 +208,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ isHighlighted 
             
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+                <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(0,210,255,0.8)] animate-pulse" />
                 <h3 className="font-anton text-sm sm:text-base uppercase tracking-wider text-white">
                   CHAVE PIX (E-MAIL) • VALOR LIVRE
                 </h3>
@@ -302,10 +302,10 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ isHighlighted 
 
             {/* Primary Action Buttons Bar */}
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
-              {/* Primary Copy Button */}
+              {/* Primary Copy Button with Vibrant Gradient */}
               <button
                 onClick={handleCopyPix}
-                className="w-full sm:w-auto min-w-[240px] group relative inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white text-black font-anton text-base tracking-wide uppercase shadow-[0_0_35px_rgba(255,255,255,0.25)] hover:bg-zinc-200 hover:shadow-[0_0_50px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                className="w-full sm:w-auto min-w-[240px] group relative inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-600 to-purple-600 hover:from-cyan-300 hover:via-blue-500 hover:to-purple-500 text-white font-anton text-base tracking-wide uppercase shadow-[0_0_35px_rgba(0,210,255,0.35)] hover:shadow-[0_0_50px_rgba(189,0,255,0.55)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
                 {copied ? (
                   <>
@@ -323,9 +323,9 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ isHighlighted 
               {/* Secondary Dedicated Button: Já fiz minha doação 🤍 */}
               <button
                 onClick={() => setIsThankYouOpen(true)}
-                className="w-full sm:w-auto min-w-[220px] group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl border-2 border-zinc-700 hover:border-zinc-500 bg-zinc-900 hover:bg-zinc-800 text-white font-anton text-base tracking-wide uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg"
+                className="w-full sm:w-auto min-w-[220px] group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl border-2 border-zinc-700 hover:border-cyan-400/50 bg-zinc-900 hover:bg-zinc-800 text-white font-anton text-base tracking-wide uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-[0_0_20px_rgba(0,210,255,0.15)]"
               >
-                <Heart className="w-4 h-4 text-white fill-white group-hover:scale-125 transition-transform" />
+                <Heart className="w-4 h-4 text-cyan-400 fill-cyan-400 group-hover:scale-125 transition-transform" />
                 <span>JÁ FIZ MINHA DOAÇÃO 🤍</span>
               </button>
             </div>

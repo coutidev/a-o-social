@@ -59,24 +59,24 @@ export const CountdownTimer: React.FC<{ className?: string }> = ({ className = '
     <div className={`w-full max-w-4xl mx-auto rounded-3xl bg-zinc-950 border border-zinc-800 p-6 sm:p-8 pix-subtle-glow shadow-2xl relative overflow-hidden text-center ${className}`}>
       
       {/* Subtle top aura */}
-      <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-      <div className="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 w-80 h-28 bg-white/[0.04] blur-3xl rounded-full" />
+      <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+      <div className="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 w-96 h-28 bg-gradient-to-r from-cyan-500/10 via-blue-600/10 to-purple-600/10 blur-3xl rounded-full" />
 
       {/* Header Tag / Event Badge */}
       <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-700 text-white text-xs font-bold uppercase tracking-wider shadow-sm">
-          <Calendar className="w-3.5 h-3.5 text-white" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-cyan-500/30 text-white text-xs font-bold uppercase tracking-wider shadow-sm">
+          <Calendar className="w-3.5 h-3.5 text-cyan-400" />
           <span>Próxima Grande Ação: {DONATION_CONFIG.eventDateFormatted}</span>
         </div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-black text-xs font-bold uppercase tracking-wider">
-          <Clock className="w-3.5 h-3.5 text-black" />
+        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(0,210,255,0.3)]">
+          <Clock className="w-3.5 h-3.5 text-white" />
           <span>Contagem Regressiva</span>
         </div>
       </div>
 
       {/* Main Title */}
       <h3 className="font-anton text-2xl sm:text-4xl text-white uppercase tracking-tight">
-        Faltam poucos dias para a nossa grande união
+        Faltam poucos dias para a nossa <span className="text-jjj-gradient">grande união</span>
       </h3>
 
       <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-xl mx-auto">
@@ -85,25 +85,25 @@ export const CountdownTimer: React.FC<{ className?: string }> = ({ className = '
 
       {/* Counter Digits Grid */}
       {timeLeft.isCompleted ? (
-        <div className="my-6 inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white text-black font-anton text-lg sm:text-xl tracking-wide uppercase shadow-xl animate-pulse">
-          <Sparkles className="w-5 h-5 text-black" />
+        <div className="my-6 inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-600 to-purple-600 text-white font-anton text-lg sm:text-xl tracking-wide uppercase shadow-xl animate-pulse">
+          <Sparkles className="w-5 h-5 text-white" />
           <span>É HOJE! GRANDE AÇÃO NO PARQUE DO SEMEADOR!</span>
         </div>
       ) : (
         <div className="my-6 flex items-center justify-center gap-2 sm:gap-4">
           {timeUnits.map((unit, index) => (
             <React.Fragment key={unit.label}>
-              <div className="flex flex-col items-center justify-center bg-zinc-900/90 border border-zinc-750 hover:border-zinc-500 px-3 sm:px-6 py-3 sm:py-4 rounded-2xl min-w-[68px] sm:min-w-[92px] shadow-lg transition-all group">
-                <span className="font-anton text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none group-hover:scale-105 transition-transform">
+              <div className="flex flex-col items-center justify-center bg-zinc-900/90 border border-zinc-800 hover:border-cyan-500/50 px-3 sm:px-6 py-3 sm:py-4 rounded-2xl min-w-[68px] sm:min-w-[92px] shadow-lg transition-all group hover:shadow-[0_0_20px_rgba(0,210,255,0.15)]">
+                <span className="font-anton text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none group-hover:scale-105 group-hover:text-cyan-300 transition-all">
                   {unit.value}
                 </span>
-                <span className="text-[10px] sm:text-xs text-zinc-400 uppercase tracking-widest font-bold mt-1.5">
+                <span className="text-[10px] sm:text-xs text-cyan-400 uppercase tracking-widest font-bold mt-1.5">
                   {unit.label}
                 </span>
               </div>
 
               {index < timeUnits.length - 1 && (
-                <span className="text-zinc-600 font-anton text-2xl sm:text-4xl -mt-4 font-bold select-none">
+                <span className="text-cyan-500/60 font-anton text-2xl sm:text-4xl -mt-4 font-bold select-none">
                   :
                 </span>
               )}

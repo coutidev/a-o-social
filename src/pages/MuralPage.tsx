@@ -254,11 +254,10 @@ export const MuralPage: React.FC = () => {
               )}
             </AnimatePresence>
 
-            {/* Botão de Envio Preto e Branco */}
             <button
               type="submit"
               disabled={isSubmitting || cooldownRemaining > 0}
-              className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl bg-white hover:bg-zinc-200 text-black font-anton uppercase text-base tracking-wider shadow-[0_0_25px_rgba(255,255,255,0.25)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-600 to-purple-600 hover:from-cyan-300 hover:via-blue-500 hover:to-purple-500 text-white font-anton uppercase text-base tracking-wider shadow-[0_0_25px_rgba(0,210,255,0.35)] hover:shadow-[0_0_35px_rgba(189,0,255,0.5)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {isSubmitting ? (
                 <>

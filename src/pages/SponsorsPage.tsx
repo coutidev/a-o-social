@@ -123,9 +123,9 @@ export const SponsorsPage: React.FC<SponsorsPageProps> = ({ onNavigateToJoin }) 
           >
             <button
               onClick={() => setPartnerModalOpen(true)}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white hover:bg-zinc-200 text-black font-anton text-base uppercase tracking-wider shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-600 to-purple-600 hover:from-cyan-300 hover:via-blue-500 hover:to-purple-500 text-white font-anton text-base uppercase tracking-wider shadow-[0_0_30px_rgba(0,210,255,0.35)] hover:shadow-[0_0_40px_rgba(189,0,255,0.55)] transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
             >
-              <Building2 className="w-5 h-5 text-black" />
+              <Building2 className="w-5 h-5 text-white" />
               <span>SEJA UM PARCEIRO</span>
             </button>
 
@@ -456,9 +456,9 @@ export const SponsorsPage: React.FC<SponsorsPageProps> = ({ onNavigateToJoin }) 
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-black font-anton text-sm uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-black"
+                    className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-600 to-purple-600 hover:from-cyan-300 hover:via-blue-500 hover:to-purple-500 text-white font-anton text-sm uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-cyan-500/20"
                   >
-                    <Send className="w-4 h-4 text-black" />
+                    <Send className="w-4 h-4 text-white" />
                     <span>Enviar Proposta de Parceria</span>
                   </button>
                 </form>

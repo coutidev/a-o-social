@@ -33,14 +33,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           
           {/* Coluna 1: Identidade do Projeto JJJ */}
           <div className="md:col-span-2 space-y-4 text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+            <div className="flex items-center justify-center md:justify-start gap-3">
+              <img
+                src="/logo-acao-social-jjj.png"
+                alt="Logo Ação Social JJJ"
+                className="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(0,210,255,0.4)]"
+              />
               <span className="font-anton text-2xl text-white tracking-tight uppercase">
-                PROJETO JJJ
+                AÇÃO SOCIAL <span className="text-jjj-gradient">JJJ</span>
               </span>
             </div>
 
-            <p className="text-xs uppercase tracking-[0.25em] text-zinc-400 font-bold">
+            <p className="text-xs uppercase tracking-[0.25em] bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent font-bold">
               JUPES • JUVENTUDE F.C. • JUREF
             </p>
 
